@@ -1,40 +1,56 @@
 import React, {Component} from 'react';
 import Icons from './Icons'
-import { connect } from 'react-redux'
 class ItemsList extends Component {
-    remove = (e)=>{
-        let list, listName;
-        if(this.props.id === 'languages_list'){
-            list = this.props.languages;
-            listName = 'languages';
-        }
-        else{
-            list = this.props.libraries;
-            listName = 'libraries';
-        };
-        this.props.removeItem(listName, list, e.target.title)
+    state={
+        list:[],
+        toAdd:""
     }
-   
-    render(){
-        let list;
-        if(this.props.id === 'languages_list'){
-            list = this.props.languages;
-        }
-        else{
-            list = this.props.libraries;
-        }
+    handleChange = (e) => {
+        this.setState({
+          [e.target.id]: e.target.value
+        });
+      }
+    componentWillReceiveProps= (nextProps) =>{
+        this.setState({
+            list: nextProps.list
+        });
+        console.log(nextProps.list);
+      }
+    remove = (e)=>{
+        let removeItem, listName;
+        listName = this.props.listName;
+        removeItem = e.target.title;
+        let newList = this.state.list.filter((item)=>{return removeItem !== item});
+        this.setState({
+          list: newList
+        });
+        this.props.remove(listName, removeItem);
+    }
+    add = () => {
+        let addItem, listName;
+        listName = this.props.listName;
+        addItem = this.state.toAdd;
+        console.log("to add this item: ", addItem);
+        console.log(this.state.list);
+        let newList = [...(this.state.list), addItem];
+        this.setState({
+            list: newList
+        })
+        this.props.add(listName, addItem);
+    }
+    displayTheList(){
+        let list =this.state.list;
         if(list && list.length > 0){
-            return(
+            return(       
                 <ul className="collection">
                     {list.map( (item, index)=>{
-                        console.log(item.name);
+                        //console.log(item.name);
                         return(
                             <li className="collection-item" key={index}>
-                                <a className="btn-floating btn-small"><Icons name={item} className='brand'/></a>
+                                <button className="btn-floating btn-small"><Icons name={item} className='brand'/></button>
                                 <span className='padding-left'>{item}</span>
-                                <a className="btn-floating btn-small red remove" onClick={this.remove}><i  title={item} className="material-icons ">remove</i></a>
-                            </li>
-                            
+                                <button className="btn-floating btn-small red remove" onClick={this.remove}><i  title={item} className="material-icons ">remove</i></button>
+                            </li> 
                         )
                     })}
 
@@ -47,16 +63,21 @@ class ItemsList extends Component {
             );
         }
     }
+
+    render(){
+        return(
+            <div>
+                <div className="input-field col s11 m5 no-padding">
+                    <textarea id="toAdd" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                    <label htmlFor="language_to_add">Language</label>           
+                    {this.displayTheList()}
+                </div>
+                <div className="input-field col s1">
+                    <span onClick={this.add} className="btn-floating pink"><i className="material-icons">add</i></span>
+                </div>
+            </div>
+        )
+    }
 }
-const mapStateToProps = (state) => {
-    return {
-      languages: state.itemsList.languages,
-      libraries: state.itemsList.libraries
-    }
-  }
-  const mapDispatchToProps = dispatch => {
-    return {
-      removeItem: (listName, list, item) => dispatch({ type: 'REMOVE_ITEM', listName, list, item })
-    }
-  }
-export default connect(mapStateToProps,mapDispatchToProps)(ItemsList);
+
+export default ItemsList;

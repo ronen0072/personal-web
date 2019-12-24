@@ -1,6 +1,7 @@
 import React from 'react';
-import {ProjectSummary} from './ProjectSummary'
-import { connect } from 'react-redux'
+import {ProjectSummary} from './ProjectSummary';
+import { connect } from 'react-redux';
+//import EditProject from './EditProject';
 // state= {name: '',info: '',date:''};
 //     initState = (name,info,date)=>{
 //         name,
@@ -20,14 +21,14 @@ class Project extends ProjectSummary{
         const project = this.props.project;
         return(
             <div className="row white margin">
-                <a className="modal-close btn-floating fixed-in-right close"><i className="material-icons">close</i></a>
+                < button className="modal-close btn-floating fixed-in-right close"><i className="material-icons">close</i></button>
                 <div className="col s12 m12 l5">
                     <div className='row'>
                         <div className='col s11'>
                             {this.displayTitle()}
                         </div>    
                         <div className='col s1'>
-                            <a className="btn-floating edit"><i className="material-icons">edit</i></a>
+                            {/* <EditProject project={project}/> */}
                         </div>
                     </div>
                     <div>

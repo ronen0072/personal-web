@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import M from "materialize-css";
 
 class Modal extends Component{
-    componentDidMount() {
+      componentDidMount = ()=>{
         var elems = document.querySelectorAll('.modal');
-        M.Modal.init(elems);
+        M.Modal.init(elems,
+            {onOpenStart:this.props.onOpenStart}
+        )
     }
     render() {
         return(

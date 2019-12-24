@@ -1,10 +1,10 @@
 import React, {Component}from 'react';
+import { connect } from 'react-redux';
 import Section from '../layout/Section';
 import Icons from '../utils/Icons';
-import { connect } from 'react-redux';
+//import EditProject from './EditProject';
 
 export class ProjectSummary extends Component{
-    
     handlClick = (e)=>{
         const project = this.props.project;
         this.props.projectToDisplay(project);
@@ -32,11 +32,12 @@ export class ProjectSummary extends Component{
     }
     displayImg = ()=>{
         const project = this.props.project;
+        const id = project.id;
         return(
             <div style={{  
             backgroundImage: "url( http://localhost:3000/img/"+( project && project.imgFileName)+".JPG )",
             }} className="project-summary-img">
-                <a className="btn-floating edit"><i className="material-icons">edit</i></a>
+                {/* <EditProject project={project}/> */}
             </div>
         )
     }

@@ -24,14 +24,17 @@ class carousel extends Component{
             this.moveNextCarousel();}, 10000);
     }
     render() {
+        const baesUrl = "http://localhost:3000/img/"
+        const bmxImg = "url( "+baesUrl+"bmx.JPG )";
+        const snowbordImg = "url( "+baesUrl+"snowbord.JPG )";
         return (
             <div className="carousel carousel-slider center">
-                <div className="carousel-item red white-text" href="#one!"style={{  
-                backgroundImage: "url( http://localhost:3000/img/"+"bmx"+".JPG )",
+                <div className="carousel-item red white-text" href="#one!" style={{
+                    backgroundImage: bmxImg
                 }}>
                 </div>
-                <div className="carousel-item red white-text" href="#two!"style={{  
-                backgroundImage: "url( http://localhost:3000/img/"+"snowbord"+".JPG )",
+                <div className="carousel-item red white-text" href="#two!" style={{  
+                    backgroundImage: snowbordImg,
                 }}>
                 </div>
             </div>

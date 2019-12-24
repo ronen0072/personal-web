@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Section from '../layout/Section';
 import {ProjectSummary} from './ProjectSummary'
+import EditProject from './EditProject'
 
 class FavoriteProject extends ProjectSummary{
     displayImg = ()=>{
@@ -10,7 +11,8 @@ class FavoriteProject extends ProjectSummary{
             <div style={{  
                 backgroundImage: "url( http://localhost:3000/img/"+(project && project.imgFileName)+".JPG )",
                 }} className="favoriteProject-img">
-                <a className="btn-floating edit"><i className="material-icons">edit</i></a>
+                {console.log('project.id',project.id)}
+                <EditProject project={project}/>
             </div>
         )
     }
@@ -26,7 +28,7 @@ class FavoriteProject extends ProjectSummary{
         }
     }
     render(){
-        console.log(this)
+        //console.log(this.props.project)
         const project = this.props.project;
         return(
             <Section className="favoriteProject brown lighten-5">

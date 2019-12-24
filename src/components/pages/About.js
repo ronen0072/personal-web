@@ -2,7 +2,7 @@ import React from 'react';
 import Section from '../layout/Section';
 import Carousel from '../layout/Carousel';
 import Icons from '../utils/Icons';
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const About = () => {
     return(

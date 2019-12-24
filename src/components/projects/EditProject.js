@@ -1,110 +1,102 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Modal from '../layout/Modal'
 //import { editProject } from '../../store/actions/projectActions';
+import CreateProject from './CreateProject';
 import ItemsList from '../utils/ItemsList';
 
-class EditProject extends Component {
-  state = {
-    title: '',
-    sub_title: '',
-    content: '',
-    githubURL:'',
-    webURL:'',
-    language_to_add: '',
-    librarie_to_add: '',
-    languages:[],
-    libraries:[]
-    
-  }
-   
-  handleChange = (e) => {
+class EditProject extends CreateProject {
+  state ={}
+  handleOpen = () => {
+    console.log( "---------------------------------------------------------------------");
+    console.log("(this.props.languages !== this.state.languages):",(this.props.project.languages !== this.state.languages));
+    console.log(this.props.project);
+  };
+
+  componentDidMount = ()=>{
     this.setState({
-      [e.target.id]: e.target.value
+      ...this.props.project
     })
   }
-  handleClick = (e) => {
-    let item, list;
-    if(e.target.id === 'languages'){
-      item = this.state.language_to_add;
-      list = this.props.languages;
-    }
-    else{
-      item = this.state.librarie_to_add;
-      list = this.props.libraries;
-    }
-    this.props.addItem(e.target.id ,list, item);
+
+  addToList = (listName, item) => {
+    let newList = [...(this.state[listName]), item];
+    this.setState({
+      [listName]: newList
+    })
+  }
+  removeFromList = (listName, removeItem) => {
+    let newList = this.state[listName].filter((item)=>{return removeItem !== item});
+    this.setState({
+      [listName]: newList
+    })
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state);
-    this.state.languages = this.props.languages;
-    this.state.libraries = this.props.libraries;
-    this.props.createProject(this.state);
+    console.log(this.state);
+
+    //this.props.editProject(this.state);
   }
   render() {
+    const project = this.props.project;
+
+    // console.log((this.state && this.state.languages));
+    //(this.state.languages && this.props.addItems('languages',[], this.state.languages));
+    //this.props.addItems('libraries',[],(this.state && this.state.languages));
     return (
-      <div className="padding">
-        <form className="" onSubmit={this.handleSubmit}>
-          <div className="row">
-            <h5 className="grey-text text-darken-3">Create a New Project</h5>
-            <div className="input-field">
-              <input type="text" id='title' onChange={this.handleChange} />
-              <label htmlFor="title">Project Title</label>
-            </div>
-            <div className="input-field">
-              <input type="text" id='sub_title' onChange={this.handleChange} />
-              <label htmlFor="sub_title">Project sub Title</label>
-            </div>
-            <div className="input-field">
-              <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
-              <label htmlFor="content">Project Content</label>
-            </div>
-            <div className="input-field">
-                <input type="url" id='webURL' onChange={this.handleChange} />
-                <label htmlFor="webURL">web URL</label>
-            </div>
-            <div className="input-field">
-                <input type="url" id='gitURL' onChange={this.handleChange} />
-                <label htmlFor="gitURL">githab URL</label>
-            </div>
-            <div className="row no-padding">
-              <div className="input-field col s11 m5 no-padding">
-                <textarea id="language_to_add" className="materialize-textarea" onChange={this.handleChange}></textarea>
-                <label htmlFor="language_to_add">Language</label>
-                <ItemsList id='languages_list'/>
+      (!this.props.isLogin)? 
+        null
+      :
+      <div>
+        <a href={"#"+(project && project.id)} onClick={this.handleOpen} className="modal-close modal-trigger btn-floating edit"><i className="material-icons">edit</i></a>
+        <Modal trigger={(project && project.id)}>
+          <div className="padding">
+            <form className="" onSubmit={(this.handleSubmit ) }>
+              <div className="row">
+                <h5 className="grey-text text-darken-3">Edit {this.state.title} Project</h5>
+                <div className="input-field">
+                  <input  type="text" id='title' defaultValue={this.state.title} onChange={this.handleChange} />
+                  <label className="active" htmlFor="title">Project Title</label>
+                </div>
+                <div className="input-field">
+                  <input type="text" id='sub_title' defaultValue={this.state && this.state.sub_title} onChange={this.handleChange} />
+                  <label className="active" htmlFor="sub_title">Project sub Title</label>
+                </div>
+                <div className="input-field">
+                  <textarea id="content"  defaultValue={this.state && this.state.content} className="materialize-textarea" onChange={this.handleChange}></textarea>
+                  <label className="active" htmlFor="content">Project Content</label>
+                </div>
+                <div className="row no-padding">
+                  <ItemsList id='languages_list' listName="languages" list={this.state.languages} add={this.addToList} remove={this.removeFromList}/>
+                  <ItemsList id='libraries_list' listName="libraries" list={this.state.libraries} add={this.addToList} remove={this.removeFromList}/> 
+                </div>
+                <div className="input-field">
+                    <input type="url" id='webURL' defaultValue={this.state && this.state.webURL} onChange={this.handleChange} />
+                    <label className="active" htmlFor="webURL">web URL</label>
+                </div>
+                <div className="input-field">
+                    <input type="url" id='gitURL' defaultValue={this.state && this.state.githubURL} onChange={this.handleChange} />
+                    <label className="active" htmlFor="gitURL">githab URL</label>
+                </div>
+                <div className="input-field">
+                  <button className="btn pink lighten-1 modal-close">Update</button>
+                </div>
               </div>
-              <div className="input-field col s1">
-                <a onClick={this.handleClick} className="btn-floating pink"><i id="languages" className="material-icons">add</i></a>
-              </div>
-              <div className="input-field col s11 m5 no-padding">
-                <textarea id="librarie_to_add" className="materialize-textarea" onChange={this.handleChange}></textarea>
-                <label htmlFor="librarie_to_add">Libraries</label>
-                 <ItemsList id='libraries_list'/> 
-              </div>
-              <div className="input-field col s1">
-                <a onClick={this.handleClick} className="btn-floating pink"><i id="libraries" className="material-icons">add</i></a>
-              </div>  
-            </div>
-   
-            <div className="input-field">
-              <button className="btn pink lighten-1 modal-close">Create</button>
-            </div>
+            </form>
           </div>
-        </form>
+        </Modal>
       </div>
     )
   }
 }
 const mapStateToProps = (state) => {
   return {
-    languages: state.itemsList.languages,
-    libraries: state.itemsList.libraries,
+    isLogin: !state.firebase.auth.isEmpty
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    editProject: (project) => dispatch(editProject(project)),
-    addItem: (listName, list, item) => dispatch({ type: 'ADD_ITEM', listName, list, item })
+    //editProject: (project) => dispatch(editProject(project)),
   }
 }
 
