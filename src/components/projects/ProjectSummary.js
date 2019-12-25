@@ -1,14 +1,17 @@
 import React, {Component}from 'react';
 import { connect } from 'react-redux';
 import Section from '../layout/Section';
+import moment from 'moment'; 
 import Icons from '../utils/Icons';
-//import EditProject from './EditProject';
+import EditProject from './EditProject';
 
 export class ProjectSummary extends Component{
     handlClick = (e)=>{
         const project = this.props.project;
         this.props.projectToDisplay(project);
     }
+    publicURL ="https://ronen-finish-personal-web.firebaseapp.com/img/";
+
     displayListOfIcons = (list) =>{
        return(
            <div>
@@ -32,12 +35,11 @@ export class ProjectSummary extends Component{
     }
     displayImg = ()=>{
         const project = this.props.project;
-        const id = project.id;
         return(
             <div style={{  
-            backgroundImage: "url( http://localhost:3000/img/"+( project && project.imgFileName)+".JPG )",
+            backgroundImage: "url("+this.publicURL+( project && project.imgFileName)+".jpg )",
             }} className="project-summary-img">
-                {/* <EditProject project={project}/> */}
+                <EditProject project={project}/>
             </div>
         )
     }
@@ -70,13 +72,13 @@ export class ProjectSummary extends Component{
     }
     displayNavBtn = ()=>{
         const project = this.props.project;
-        let colSize = 12;
-        if(project && project.githubURL && project.githubURL !== ''){
-            colSize -=2;
-        }
+        // let colSize = 12;
+        // if(project && project.githubURL && project.githubURL !== ''){
+        //     colSize -=2;
+        // }
         let gitClass = ' float-right'
         if(project && project.webURL && project.webURL !== ''){
-            colSize = colSize/2;
+            //colSize = colSize/2;
             gitClass = ' center'
         }
         return(
@@ -97,7 +99,7 @@ export class ProjectSummary extends Component{
         let project = this.props.project;
         if(project && project.date ){
             return(
-                <p id="project-date" className="grey-text">{new Date(project && project.date.seconds * 1000).toLocaleDateString("en-IL")}</p>
+                <p id="project-date" className="grey-text">{moment(project && project.date.toDate()).calendar()}</p>
             )
         }
     }

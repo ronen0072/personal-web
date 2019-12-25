@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import M from "materialize-css";
 
 class carousel extends Component{
+    publicURL ="https://ronen-finish-personal-web.firebaseapp.com/img/";
     moveNextCarousel() {
         var elems = document.querySelector('.carousel.carousel-slider');
         if(elems){
@@ -24,9 +25,8 @@ class carousel extends Component{
             this.moveNextCarousel();}, 10000);
     }
     render() {
-        const baesUrl = "http://localhost:3000/img/"
-        const bmxImg = "url( "+baesUrl+"bmx.JPG )";
-        const snowbordImg = "url( "+baesUrl+"snowbord.JPG )";
+        const bmxImg = "url( "+this.publicURL+"bmx.jpg )";
+        const snowbordImg = "url( "+this.publicURL+"snowbord.jpg )";
         return (
             <div className="carousel carousel-slider center">
                 <div className="carousel-item red white-text" href="#one!" style={{

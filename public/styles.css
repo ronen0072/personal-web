@@ -227,17 +227,19 @@ body::after{
 .favorite-margin{
   margin:  2.5%;
 }
-.summary-info,.summary-info-project{
+.project-info,.summary-info,.summary-info-project{
   display: block;
   display: -webkit-box;
   max-width: 100%;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: justify;
   margin-top: calc(0.2rem + 0.1vw);
 }
+/* .summary-info{
+  -webkit-line-clamp: 3;
+} */
 .summary-info-project{
   -webkit-line-clamp: 5;
 }

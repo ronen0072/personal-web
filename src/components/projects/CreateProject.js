@@ -18,7 +18,7 @@ class CreateProject extends Component {
    
   handleChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.name]: e.target.value
     })
   }
   addToList = (listName, item) => {
@@ -51,15 +51,15 @@ class CreateProject extends Component {
               <div className="row">
                 <h5 className="grey-text text-darken-3">Create a New Project</h5>
                 <div className="input-field">
-                  <input type="text" id='title' onChange={this.handleChange} />
+                  <input type="text" name='title' onChange={this.handleChange} />
                   <label htmlFor="title">Project Title</label>
                 </div>
                 <div className="input-field">
-                  <input type="text" id='sub_title' onChange={this.handleChange} />
+                  <input type="text" name='sub_title' onChange={this.handleChange} />
                   <label htmlFor="sub_title">Project sub Title</label>
                 </div>
                 <div className="input-field">
-                  <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                  <textarea name="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
                   <label htmlFor="content">Project Content</label>
                 </div>
                 <div className="row no-padding">
@@ -67,11 +67,11 @@ class CreateProject extends Component {
                   <ItemsList id='libraries_list' listName="libraries" list={this.state.libraries} add={this.addToList} remove={this.removeFromList}/> 
                 </div>
                 <div className="input-field">
-                    <input type="url" id='webURL' onChange={this.handleChange} />
+                    <input type="url" name='webURL' onChange={this.handleChange} />
                     <label htmlFor="webURL">web URL</label>
                 </div>
                 <div className="input-field">
-                    <input type="url" id='gitURL' onChange={this.handleChange} />
+                    <input type="url" inamed='gitURL' onChange={this.handleChange} />
                     <label htmlFor="gitURL">githab URL</label>
                 </div>
                 <div className="input-field">

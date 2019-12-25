@@ -1,7 +1,7 @@
 import React from 'react';
 import {ProjectSummary} from './ProjectSummary';
 import { connect } from 'react-redux';
-//import EditProject from './EditProject';
+import EditProject from './EditProject';
 // state= {name: '',info: '',date:''};
 //     initState = (name,info,date)=>{
 //         name,
@@ -14,7 +14,13 @@ class Project extends ProjectSummary{
     displayImg = ()=>{
         const project = this.props.project;
         return(
-            <img id="project-img" src={"http://localhost:3000/img/"+(project && project.imgFileName)+".JPG"} className='responsive-img' />
+            <img id="project-img" src={this.publicURL+(project && project.imgFileName)+".jpg"} className='responsive-img' alt="project img" />
+        )
+    }
+    displayContent = ()=>{
+        const project = this.props.project;
+        return(
+            <p className="project-info">{project && project.content}</p>      
         )
     }
     render(){
@@ -28,7 +34,7 @@ class Project extends ProjectSummary{
                             {this.displayTitle()}
                         </div>    
                         <div className='col s1'>
-                            {/* <EditProject project={project}/> */}
+                            <EditProject project={project}/>
                         </div>
                     </div>
                     <div>

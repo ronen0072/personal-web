@@ -9,9 +9,8 @@ class FavoriteProject extends ProjectSummary{
         const project = this.props.project;
         return(
             <div style={{  
-                backgroundImage: "url( http://localhost:3000/img/"+(project && project.imgFileName)+".JPG )",
+                backgroundImage: "url("+this.publicURL+(project && project.imgFileName)+".jpg )",
                 }} className="favoriteProject-img">
-                {console.log('project.id',project.id)}
                 <EditProject project={project}/>
             </div>
         )
@@ -31,7 +30,7 @@ class FavoriteProject extends ProjectSummary{
         //console.log(this.props.project)
         const project = this.props.project;
         return(
-            <Section className="favoriteProject brown lighten-5">
+            <Section className="favoriteProject">
                 <div className="row void-section">
                     {this.displayImg()}
                     <div className="halfway">

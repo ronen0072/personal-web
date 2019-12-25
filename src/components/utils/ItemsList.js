@@ -10,11 +10,18 @@ class ItemsList extends Component {
           [e.target.id]: e.target.value
         });
       }
-    componentWillReceiveProps= (nextProps) =>{
-        this.setState({
-            list: nextProps.list
-        });
-        console.log(nextProps.list);
+    // componentWillReceiveProps= (nextProps) =>{
+    //     this.setState({
+    //         list: nextProps.list
+    //     });
+    //     console.log(nextProps.list);
+    // }
+    static getDerivedStateFromProps(nextProps, state) {
+        if(nextProps && state){
+            state.list = nextProps.list
+            return state;
+        }
+        return null;
       }
     remove = (e)=>{
         let removeItem, listName;
@@ -30,8 +37,8 @@ class ItemsList extends Component {
         let addItem, listName;
         listName = this.props.listName;
         addItem = this.state.toAdd;
-        console.log("to add this item: ", addItem);
-        console.log(this.state.list);
+        // console.log("to add this item: ", addItem);
+        // console.log(this.state.list);
         let newList = [...(this.state.list), addItem];
         this.setState({
             list: newList

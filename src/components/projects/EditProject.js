@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Modal from '../layout/Modal'
 //import { editProject } from '../../store/actions/projectActions';
@@ -55,15 +55,15 @@ class EditProject extends CreateProject {
               <div className="row">
                 <h5 className="grey-text text-darken-3">Edit {this.state.title} Project</h5>
                 <div className="input-field">
-                  <input  type="text" id='title' defaultValue={this.state.title} onChange={this.handleChange} />
+                  <input  type="text" name='title' defaultValue={this.state.title} onChange={this.handleChange} />
                   <label className="active" htmlFor="title">Project Title</label>
                 </div>
                 <div className="input-field">
-                  <input type="text" id='sub_title' defaultValue={this.state && this.state.sub_title} onChange={this.handleChange} />
+                  <input type="text" name='sub_title' defaultValue={this.state && this.state.sub_title} onChange={this.handleChange} />
                   <label className="active" htmlFor="sub_title">Project sub Title</label>
                 </div>
                 <div className="input-field">
-                  <textarea id="content"  defaultValue={this.state && this.state.content} className="materialize-textarea" onChange={this.handleChange}></textarea>
+                  <textarea name="content"  defaultValue={this.state && this.state.content} className="materialize-textarea" onChange={this.handleChange}></textarea>
                   <label className="active" htmlFor="content">Project Content</label>
                 </div>
                 <div className="row no-padding">
@@ -71,11 +71,11 @@ class EditProject extends CreateProject {
                   <ItemsList id='libraries_list' listName="libraries" list={this.state.libraries} add={this.addToList} remove={this.removeFromList}/> 
                 </div>
                 <div className="input-field">
-                    <input type="url" id='webURL' defaultValue={this.state && this.state.webURL} onChange={this.handleChange} />
+                    <input type="url" name='webURL' defaultValue={this.state && this.state.webURL} onChange={this.handleChange} />
                     <label className="active" htmlFor="webURL">web URL</label>
                 </div>
                 <div className="input-field">
-                    <input type="url" id='gitURL' defaultValue={this.state && this.state.githubURL} onChange={this.handleChange} />
+                    <input type="url" name='gitURL' defaultValue={this.state && this.state.githubURL} onChange={this.handleChange} />
                     <label className="active" htmlFor="gitURL">githab URL</label>
                 </div>
                 <div className="input-field">
