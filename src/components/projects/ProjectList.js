@@ -19,17 +19,17 @@ class ProjectList extends Component {
     displayFavoritesProjects(){
         const projects =  this.getFavorites();
         return(
-            <div className="project-list row">
+            <div className="Favorites-projects-list">
                 {projects && projects.map( (project, index)=>{
                     let addToClass = '';
-                    if(index%2===1) {addToClass = "favorite-margin";}
+                    if(index%2===1) {addToClass = "favorite-margin ";}
                     return(
-                        <span key={project.id} className={addToClass}>
-                            <FavoriteProject     
-                                index={index}
-                               project={project} 
-                           /> 
-                        </span>
+                            <FavoriteProject
+                                key={project.id}
+                                className={"project-col "+addToClass}
+                               index={index}
+                               {...project}
+                           />
                     )
                 })}
             </div>
@@ -47,7 +47,7 @@ class ProjectList extends Component {
                         <div  key={project.id}  className={"col l11"+addToClass}>
                             <ProjectSummary 
                                 index={index} 
-                                project={project} 
+                                {...project}
                             />
                         </div>
                     )

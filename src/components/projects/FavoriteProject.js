@@ -1,49 +1,78 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import Section from '../layout/Section';
 import {ProjectSummary} from './ProjectSummary'
 import EditProject from './EditProject'
 
-class FavoriteProject extends ProjectSummary{
+export class FavoriteProject extends ProjectSummary{
     displayImg = ()=>{
-        const project = this.props.project;
+        const project = this.props;
         return(
-            <div style={{  
+            <div id={"img_"+project.id } style={{
                 backgroundImage: "url("+this.publicURL+(project && project.imgFileName)+".jpg )",
                 }} className="favoriteProject-img">
                 <EditProject project={project}/>
             </div>
         )
-    }
-    displayGithubURL = ()=>{
-        let webURL = this.props.project.webURL;
-        if(!webURL || webURL === ''){
-            let githubURL = this.props.project.githubURL;
-            if(githubURL && githubURL !== ''){
-                return(
-                    <a href={githubURL} className="btn btn-style modal-trigger"><i className="fab fa-github padding-little"></i></a>       
-                )
-            }
-        }
-    }
-    render(){
-        //console.log(this.props.project)
-        const project = this.props.project;
+    };
+    onHover = ()=>{
+        let className = "favorite-Project-info";
+        let img = document.getElementById("img_"+this.props.id);
+        let info = document.getElementById("info-"+this.props.id);
+        info.classList.remove(className+'-out');
+        info.classList.remove(className);
+        info.classList.add(className+'-in');
+        img.classList.remove('favoriteProject-img-out');
+        img.classList.remove('favoriteProject-img');
+        img.classList.add('favoriteProject-img-in');
+        };
+    onblur= ()=>{
+        let className = "favorite-Project-info";
+        let img = document.getElementById("img_"+this.props.id);
+        let info = document.getElementById("info-"+this.props.id);
+
+        info.classList.remove(className+'-in');
+        info.classList.add(className);
+        info.classList.add(className+'-out');
+        img.classList.remove('favoriteProject-in');
+        img.classList.add('favoriteProject-img');
+        img.classList.add('favoriteProject-img-out');
+    };
+    displayContent = ()=>{
+        const project = this.props;
         return(
-            <Section className="favoriteProject">
-                <div className="row void-section">
-                    {this.displayImg()}
-                    <div className="halfway">
-                        {this.displayListOfIcons(project.languages)}
+            <div className="favorite-Project-info-wrapper">
+                <div className="inset-box-shadow">
+                </div>
+                <p id={"info-"+project.id} className="favorite-Project-info">{project && project.content}</p>
+            </div>
+
+
+        )
+    };
+    render(){
+        console.log(this.props);
+        const project = this.props;
+        return(
+            <Section className={this.props.className+"void-padding favoriteProject "} onMouseEnter={this.onHover} onMouseLeave={this.onblur}>
+                <div className="">
+                    <div className="" >
+                        {this.displayImg()}
+                        <div className="halfway">
+                            {this.displayListOfIcons(project.languages)}
+                        </div>
+                    </div>
+                    <div className="content-padding">
+                        <div className="favoriteTitle" >
+                            {this.displayTitle()}
+                        </div>
+                        {this.displayContent()}
                     </div>
                 </div>
-                <div className="row">
-                        {this.displayTitle()}
-                        {this.displayContent()}
-                        {this.displayNavBtn()}
-                
-                </div> 
-            </Section>  
+
+                {this.displayNavBtn()}
+            </Section>
         )
     }
 }const mapDispatchToProps = dispatch => {
@@ -52,3 +81,4 @@ class FavoriteProject extends ProjectSummary{
     }
   }
 export default connect(null, mapDispatchToProps)(FavoriteProject);
+///  <div onMouseEnter={this.onHover} onMouseLeave={this.onblur} style={{verticalAlign: "top"}}>

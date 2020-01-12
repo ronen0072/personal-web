@@ -1,6 +1,7 @@
 import React from 'react';
-import {ProjectSummary} from './ProjectSummary';
+import {FavoriteProject} from './FavoriteProject';
 import { connect } from 'react-redux';
+import Section from '../layout/Section';
 import EditProject from './EditProject';
 // state= {name: '',info: '',date:''};
 //     initState = (name,info,date)=>{
@@ -8,29 +9,29 @@ import EditProject from './EditProject';
 //         info,
 //         date
 //     }
-class Project extends ProjectSummary{
+class Project extends FavoriteProject{
     displayMoreInfo = ()=>{
-    }
-    displayImg = ()=>{
-        const project = this.props.project;
-        return(
-            <img id="project-img" src={this.publicURL+(project && project.imgFileName)+".jpg"} className='responsive-img' alt="project img" />
-        )
-    }
+    };
+    // displayImg = ()=>{
+    //     const project = this.props;
+    //     return(
+    //         <img id="project-img" src={this.publicURL+(project && project.imgFileName)+".jpg"} className='responsive-img' alt="project img" />
+    //     )
+    // };
     displayContent = ()=>{
-        const project = this.props.project;
+        const project = this.props;
         return(
             <p className="project-info">{project && project.content}</p>      
         )
-    }
+    };
     render(){
-        const project = this.props.project;
+        const project = this.props;
         return(
-            <div className="row white margin">
+            <Section className="row no-margin">
                 < button className="modal-close btn-floating fixed-in-right close"><i className="material-icons">close</i></button>
                 <div className="col s12 m12 l5">
                     <div className='row'>
-                        <div className='col s11'>
+                        <div className='col s10'>
                             {this.displayTitle()}
                         </div>    
                         <div className='col s1'>
@@ -38,20 +39,21 @@ class Project extends ProjectSummary{
                         </div>
                     </div>
                     <div>
-                        {this.displayListOfIcons((project && project.languages))}
+                        {this.displayImg()}
+                        <div className="halfway">
+                            {this.displayListOfIcons(project.languages)}
+                        </div>
                         {this.displayDate()}
+                        {this.displayNavBtn()}
                     </div>
                 </div>
                 <div className="col s12 m12 l7 ">
                     <div>
-                        {this.displayImg()}
+                        {this.displayContent()}
+
                     </div>
                 </div>
-                <div className="col">
-                    {this.displayContent()} 
-                    {this.displayNavBtn()}
-                </div>   
-            </div>  
+            </Section>
         )
   
     }
@@ -60,7 +62,7 @@ class Project extends ProjectSummary{
   const mapStateToProps =(state)=>{
     return{
         Gstate: state,
-        project: state.project.projectToDisplay
+        ...state.project.projectToDisplay
     }
-  }
+  };
   export default connect(mapStateToProps)(Project);

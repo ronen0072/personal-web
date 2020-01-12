@@ -32,8 +32,8 @@ class Navbar extends Component{
     }
     render() {
         return (
-          <nav className="nav-wrapper transparent">
-            <div className="fixed-position z-depth-3 halfTransparent">
+          <nav className="transparent nav-wrapper">
+            <div className="fixed-position halfTransparent">
                 <div className="container">
                     <NavLink to="/" className="brand-logo push-s1">
                         <span className='logo'>Ronen Finish</span>

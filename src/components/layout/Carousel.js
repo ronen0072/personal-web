@@ -22,13 +22,18 @@ class carousel extends Component{
             indicators: true
         });
         setInterval(()=>{
-            this.moveNextCarousel();}, 10000);
+            this.moveNextCarousel();}, 30000);
     }
     render() {
         const bmxImg = "url( "+this.publicURL+"bmx.jpg )";
         const snowbordImg = "url( "+this.publicURL+"snowbord.jpg )";
+        const surfing = "url( "+this.publicURL+"surfing.jpg )";
         return (
             <div className="carousel carousel-slider center">
+                <div className="carousel-item blue white-text" href="#one!" style={{
+                    backgroundImage: surfing
+                }}>
+                </div>
                 <div className="carousel-item red white-text" href="#one!" style={{
                     backgroundImage: bmxImg
                 }}>
