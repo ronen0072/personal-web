@@ -14,30 +14,31 @@ class CreateProject extends Component {
     languages:[],
     libraries:[]
     
-  }
+  };
    
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
-  }
+  };
   addToList = (listName, item) => {
     let newList = [...(this.state[listName]), item];
     this.setState({
       [listName]: newList
     })
-  }
+  };
   removeFromList = (listName, removeItem) => {
     let newList = this.state[listName].filter((item)=>{return removeItem !== item});
     this.setState({
       [listName]: newList
     })
-  }
+  };
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state);
+    console.log("handleSubmit");
+    console.log(this.state);
     this.props.createProject(this.state);
-  }
+  };
   render() {
     return(
       (!this.props.isLogin)? 
@@ -67,12 +68,12 @@ class CreateProject extends Component {
                   <ItemsList id='libraries_list' listName="libraries" list={this.state.libraries} add={this.addToList} remove={this.removeFromList}/> 
                 </div>
                 <div className="input-field">
-                    <input type="url" name='webURL' onChange={this.handleChange} />
+                    <input type="text" name='webURL' onChange={this.handleChange} />
                     <label htmlFor="webURL">web URL</label>
                 </div>
                 <div className="input-field">
-                    <input type="url" inamed='gitURL' onChange={this.handleChange} />
-                    <label htmlFor="gitURL">githab URL</label>
+                    <input type="text" name='githubURL' onChange={this.handleChange} />
+                    <label htmlFor="githubURL">githab URL</label>
                 </div>
                 <div className="input-field">
                   <button className="btn pink lighten-1 modal-close">Create</button>
@@ -89,11 +90,11 @@ const mapStateToProps = (state) => {
   return {
     isLogin: !state.firebase.auth.isEmpty
   }
-}
+};
 const mapDispatchToProps = dispatch => {
   return {
     createProject: (project) => dispatch(createProject(project))
   }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);

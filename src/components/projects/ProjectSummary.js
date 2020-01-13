@@ -51,9 +51,12 @@ export class ProjectSummary extends Component{
     };
     displayMoreInfo = ()=>{
         let project = this.props;
-        let width = "50%";
+        let width = "100%";
+        if(project && (project.githubURL && project.githubURL !== '')){
+            width = "49.75%";
+        }
         if(project && project.webURL && project.webURL !== '') {
-            width = "33.333333%";
+            width = "33%";
         }
         return(
             <span className="no-padding float-left" style={{ width: width}}>
@@ -63,11 +66,13 @@ export class ProjectSummary extends Component{
     };
     displayWebURL = ()=>{
         let project = this.props;
-        let width = "33.333333%";
+        let width = "33%";
         if(project &&  (project.webURL && project.webURL !== '')){
             return(
                 <span className="no-padding float-right" style={{ width: width}}>
-                    <a href={project.webURL} className="btn-style modal-trigger">to view</a>
+                    <a
+                        href={project.webURL}
+                       className="btn-style modal-trigger">to view</a>
                 </span>
             )
         }
@@ -75,10 +80,10 @@ export class ProjectSummary extends Component{
     displayGithubURL = ()=>{
         let project = this.props;
         let floatTo = ' float-right';
-        let width = "50%";
+        let width = "49.75%";
         if(project && project.webURL && project.webURL !== '') {
-            floatTo = ' center';
-            width = "33.333333%";
+            floatTo = ' float-center';
+            width = "33%";
         }
         if(project && (project.githubURL && project.githubURL !== '')){
             return(
@@ -119,8 +124,9 @@ export class ProjectSummary extends Component{
                     <div className="col s12 m12 l8 xl7 padding">
                         {this.displayTitle()}
                         {this.displayContent()}
-                        {this.displayNavBtn()}
+
                     </div>
+                    {this.displayNavBtn()}
                 </Section>  
             )
         }
@@ -137,8 +143,9 @@ export class ProjectSummary extends Component{
                     <div className="col s12 m12 l8 xl7 padding pull-l4 pull-xl5">
                         {this.displayTitle()}
                         {this.displayContent()}
-                        {this.displayNavBtn()}
+
                     </div>
+                    {this.displayNavBtn()}
                 </Section>  
             )
         }

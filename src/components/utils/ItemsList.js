@@ -7,7 +7,7 @@ class ItemsList extends Component {
     }
     handleChange = (e) => {
         this.setState({
-          [e.target.id]: e.target.value
+          [e.target.name]: e.target.value
         });
       }
     // componentWillReceiveProps= (nextProps) =>{
@@ -18,7 +18,7 @@ class ItemsList extends Component {
     // }
     static getDerivedStateFromProps(nextProps, state) {
         if(nextProps && state){
-            state.list = nextProps.list
+            state.list = nextProps.list;
             return state;
         }
         return null;
@@ -75,8 +75,8 @@ class ItemsList extends Component {
         return(
             <div>
                 <div className="input-field col s11 m5 no-padding">
-                    <textarea id="toAdd" className="materialize-textarea" onChange={this.handleChange}></textarea>
-                    <label htmlFor="language_to_add">Language</label>           
+                    <textarea name="toAdd" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                    <label htmlFor="toAdd">{this.props.listName}</label>
                     {this.displayTheList()}
                 </div>
                 <div className="input-field col s1">

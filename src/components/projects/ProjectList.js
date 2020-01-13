@@ -7,22 +7,25 @@ import { compose } from 'redux';
 
 class ProjectList extends Component {
     getFavorites(){
-        let favoritesProjects
+        let favoritesProjects;
         if(this.props.projects){
-            favoritesProjects = this.props.projects;//.filter((project)=>{return(project.favorite==='true')});
+            favoritesProjects = this.props.projects.filter((project)=>{return(project.favorite === true)});
             if(favoritesProjects.length !== 3) {
                 console.log('there are less than 3 favorites Projects!!!' ) 
             }
         }
         return favoritesProjects;
     }
+    //0 1 2
+    //3 4 5
+    //6 7 8
     displayFavoritesProjects(){
         const projects =  this.getFavorites();
         return(
             <div className="Favorites-projects-list">
                 {projects && projects.map( (project, index)=>{
                     let addToClass = '';
-                    if(index%2===1) {addToClass = "favorite-margin ";}
+                    if(index%3===1) {addToClass = "favorite-margin ";}
                     return(
                             <FavoriteProject
                                 key={project.id}
@@ -38,18 +41,18 @@ class ProjectList extends Component {
     displayAllProjects(){
         const projects = this.props.projects;
         return(
-            <div className="project-list row">
+            <div className="Favorites-projects-list">
                 {projects && projects.map( (project, index)=>{
                     let addToClass = '';
-                    if(index%2===0) {addToClass = " push-l1";}
-                    //else{ addToClass = " pull-l1";}
+                    if(index%3===1) {addToClass = "favorite-margin ";}
+                    if(index%3===0) {addToClass = "feature_wrapper ";}
                     return(
-                        <div  key={project.id}  className={"col l11"+addToClass}>
-                            <ProjectSummary 
-                                index={index} 
-                                {...project}
-                            />
-                        </div>
+                        <FavoriteProject
+                            key={project.id}
+                            className={"project-col "+addToClass}
+                            index={index}
+                            {...project}
+                        />
                     )
                 })}
             </div>

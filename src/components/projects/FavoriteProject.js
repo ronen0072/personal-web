@@ -11,7 +11,7 @@ export class FavoriteProject extends ProjectSummary{
         return(
             <div id={"img_"+project.id } style={{
                 backgroundImage: "url("+this.publicURL+(project && project.imgFileName)+".jpg )",
-                }} className="favoriteProject-img">
+                }} className="favoriteProject-img favoriteProject-img-initiali">
                 <EditProject project={project}/>
             </div>
         )
@@ -24,7 +24,7 @@ export class FavoriteProject extends ProjectSummary{
         info.classList.remove(className);
         info.classList.add(className+'-in');
         img.classList.remove('favoriteProject-img-out');
-        img.classList.remove('favoriteProject-img');
+        img.classList.remove('favoriteProject-img-initiali');
         img.classList.add('favoriteProject-img-in');
         };
     onblur= ()=>{
@@ -36,7 +36,6 @@ export class FavoriteProject extends ProjectSummary{
         info.classList.add(className);
         info.classList.add(className+'-out');
         img.classList.remove('favoriteProject-in');
-        img.classList.add('favoriteProject-img');
         img.classList.add('favoriteProject-img-out');
     };
     displayContent = ()=>{
@@ -52,27 +51,22 @@ export class FavoriteProject extends ProjectSummary{
         )
     };
     render(){
-        console.log(this.props);
+        // console.log(this.props);
         const project = this.props;
         return(
-            <Section className={this.props.className+"void-padding favoriteProject "} onMouseEnter={this.onHover} onMouseLeave={this.onblur}>
-                <div className="">
-                    <div className="" >
-                        {this.displayImg()}
-                        <div className="halfway">
-                            {this.displayListOfIcons(project.languages)}
-                        </div>
-                    </div>
-                    <div className="content-padding">
-                        <div className="favoriteTitle" >
-                            {this.displayTitle()}
-                        </div>
-                        {this.displayContent()}
-                    </div>
+            <div className={this.props.className+"void-padding favoriteProject "} onMouseEnter={this.onHover} onMouseLeave={this.onblur}>
+                {this.displayImg()}
+                <div className="halfway">
+                    {this.displayListOfIcons(project.languages)}
                 </div>
-
+                <div className="content-padding white">
+                    <div className="favoriteTitle" >
+                        {this.displayTitle()}
+                    </div>
+                    {this.displayContent()}
+                </div>
                 {this.displayNavBtn()}
-            </Section>
+            </div>
         )
     }
 }const mapDispatchToProps = dispatch => {
