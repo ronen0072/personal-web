@@ -12,16 +12,16 @@ class SingedInLinks extends Component{
         callbacks: {
             signInSuccess: () => false
         }
-    }
+    };
     handlClick = ()=>{
         this.props.signIn();
-    }
+    };
     render(){
         // console.log('this.state');
         // console.log(this.props);
         return(
             !this.props.isLogin?
-            <a href="#" onClick={this.handlClick} className="grey-text text-lighten-4 margin" >Admin Login</a>
+            <button onClick={this.handlClick} className="link grey-text text-lighten-4 margin" >Admin Login</button>
             :null
         )
 
@@ -32,11 +32,11 @@ const mapStateToProps = (state) => {
         authError: state.auth.authError,
         isLogin: !state.firebase.auth.isEmpty
     }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
         signIn: (creds) => dispatch(signIn(creds))
     }
-}
+};
 export default connect(mapStateToProps, mapDispatchToProps)(SingedInLinks);

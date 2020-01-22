@@ -10,14 +10,60 @@ import EditProject from './EditProject';
 //         date
 //     }
 class Project extends FavoriteProject{
+    displayImg = ()=>{
+        const project = this.props;
+        return(
+            <div id={"img_"+project.id } style={{
+                backgroundImage: "url("+this.publicURL+(project && project.imgFileName)+".jpg )",
+            }} className="favoriteProject-img favoriteProject-img-initiali">
+            </div>
+        )
+    };
+
     displayMoreInfo = ()=>{
     };
-    // displayImg = ()=>{
-    //     const project = this.props;
-    //     return(
-    //         <img id="project-img" src={this.publicURL+(project && project.imgFileName)+".jpg"} className='responsive-img' alt="project img" />
-    //     )
-    // };
+    displayWebURL = ()=>{
+        let project = this.props;
+        if(project &&  (project.webURL && project.webURL !== '')){
+            return(
+                <span className="no-padding">
+                    <a
+                        href={project.webURL}
+                        className="btn-style btn-project  vertical-text modal-trigger" style={{zIndex: "2"}}>to view</a>
+                </span>
+            )
+        }
+    };
+    displayGithubURL = ()=>{
+        let project = this.props;
+        if(project && (project.githubURL && project.githubURL !== '')){
+            return(
+                <span className={"no-margin no-padding"}  >
+                    <a href={project.githubURL} className="btn-style btn-project modal-trigger " style={{zIndex: '3'}}><i className="fab fa-github padding-little"/></a>
+                </span>
+            )
+        }
+    };
+    displayEdit = ()=>{
+        let project = this.props;
+        if(project && (project.githubURL && project.githubURL !== '')){
+            return(
+                <span className={"no-margin no-padding"} style={{zIndex: '1'}}>
+                    <EditProject project={project} className="btn-style btn-project" />
+                </span>
+            )
+        }
+    };
+    displayNavBtn = ()=>{
+        return(
+            <div className="project-NavBtn center">
+                {this.displayMoreInfo()}
+                {this.displayGithubURL()}
+                {this.displayWebURL()}
+                {this.displayEdit()}
+            </div>
+        )
+    };
     displayContent = ()=>{
         const project = this.props;
         return(
@@ -29,28 +75,24 @@ class Project extends FavoriteProject{
         return(
             <Section className="row no-margin">
                 < button className="modal-close btn-floating fixed-in-right close"><i className="material-icons">close</i></button>
-                <div className="col s12 m12 l5">
-                    <div className='row'>
-                        <div className='col s10'>
+                {/*<div className="col s1 m1 l1 no-padding">*/}
+                    {this.displayNavBtn()}
+                {/*</div>*/}
+                <div className="project-wrapper">
+                    <div className="col s12 m12 l5">
+                        <div className='row'>
                             {this.displayTitle()}
-                        </div>    
-                        <div className='col s1'>
-                            <EditProject project={project}/>
+                            {this.displayDate()}
+                        </div>
+                        <div className='row'>
+                            {this.displayImg()}
+                            <div className="halfway">
+                                {this.displayListOfIcons(project.languages && project.languages.concat(project.libraries), true)}
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        {this.displayImg()}
-                        <div className="halfway">
-                            {this.displayListOfIcons(project.languages)}
-                        </div>
-                        {this.displayDate()}
-                        {this.displayNavBtn()}
-                    </div>
-                </div>
-                <div className="col s12 m12 l7 ">
-                    <div>
-                        {this.displayContent()}
-
+                    <div className="col s12 m12 l7 no-padding">
+                            {this.displayContent()}
                     </div>
                 </div>
             </Section>
@@ -61,7 +103,7 @@ class Project extends FavoriteProject{
   }
   const mapStateToProps =(state)=>{
     return{
-        Gstate: state,
+        state: state,
         ...state.project.projectToDisplay
     }
   };

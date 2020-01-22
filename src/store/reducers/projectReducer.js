@@ -2,7 +2,7 @@ const initState = {
     projects:[],
     projectToDisplay: null,
     projectToEdit: null
-}
+};
 const projectReducer = (state = initState, action)=>{
     switch(action.type){
         case 'CREATE_PROJECT':
@@ -11,20 +11,20 @@ const projectReducer = (state = initState, action)=>{
         case 'CREATE_PROJECT_ERROR':
             console.log('create project error', action.err);
             return state;
-        case 'EDIT_PROJECT':
+        case 'UPDATE_PROJECT':
             console.log('edit project', action.project);
             return state;
-        case 'EDIT_PROJECT_ERROR':
-            console.log('edit project error', action.err);
+        case 'UPDATE_PROJECT_ERROR':
+            console.log('update project error', action.err);
             return state;
-        case 'POJECT_TO_DISPLAY':
+        case 'PROJECT_TO_DISPLAY':
             console.log('project to display', action.project.id);
             return{
                 ...state,
                 projectToDisplay: action.project
             };
-        case 'POJECT_TO_EDIT':
-            console.log('project to edit', action.project.id);
+        case 'PROJECT_TO_EDIT':
+            //console.log('project to edit', action.project.id);
             return{
                 ...state,
                 projectToDisplay: action.project
@@ -32,5 +32,5 @@ const projectReducer = (state = initState, action)=>{
         default:
             return state;
     }
-}
+};
 export default projectReducer;

@@ -1,11 +1,31 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import Section from '../layout/Section';
 import {ProjectSummary} from './ProjectSummary'
 import EditProject from './EditProject'
+import {Icons, isIcons} from "../utils/Icons";
 
 export class FavoriteProject extends ProjectSummary{
+    handleClick = ()=>{
+        const project = this.props;
+        this.props.projectToDisplay(project);
+    };
+    displayListOfIcons = (list, displayAnyway) =>{
+        return(
+            <div>
+                {list && list.map((item,index)=>{
+                    if(displayAnyway||isIcons(item)){
+                        return(
+                            <Icons key={index} name={item} className="brand"/>
+                        )
+                    }
+                    else {
+                        return null;
+                    }
+                })}
+            </div>
+
+        )
+    };
     displayImg = ()=>{
         const project = this.props;
         return(
@@ -21,7 +41,7 @@ export class FavoriteProject extends ProjectSummary{
         let img = document.getElementById("img_"+this.props.id);
         let info = document.getElementById("info-"+this.props.id);
         info.classList.remove(className+'-out');
-        info.classList.remove(className);
+        info.classList.remove(className+'-initiali');
         info.classList.add(className+'-in');
         img.classList.remove('favoriteProject-img-out');
         img.classList.remove('favoriteProject-img-initiali');
@@ -33,18 +53,15 @@ export class FavoriteProject extends ProjectSummary{
         let info = document.getElementById("info-"+this.props.id);
 
         info.classList.remove(className+'-in');
-        info.classList.add(className);
         info.classList.add(className+'-out');
-        img.classList.remove('favoriteProject-in');
+        img.classList.remove('favoriteProject-img-in');
         img.classList.add('favoriteProject-img-out');
     };
     displayContent = ()=>{
         const project = this.props;
         return(
             <div className="favorite-Project-info-wrapper">
-                <div className="inset-box-shadow">
-                </div>
-                <p id={"info-"+project.id} className="favorite-Project-info">{project && project.content}</p>
+                <p id={"info-"+project.id} className="favorite-Project-info favorite-Project-info-initiali">{project && project.content}</p>
             </div>
 
 
@@ -54,10 +71,10 @@ export class FavoriteProject extends ProjectSummary{
         // console.log(this.props);
         const project = this.props;
         return(
-            <div className={this.props.className+"void-padding favoriteProject "} onMouseEnter={this.onHover} onMouseLeave={this.onblur}>
+            <div className={this.props.className+"void-padding favoriteProject "} onTouchStart={this.onHover} onMouseEnter={this.onHover} onTouchEnd={this.onblur} onMouseLeave={this.onblur}>
                 {this.displayImg()}
                 <div className="halfway">
-                    {this.displayListOfIcons(project.languages)}
+                    {this.displayListOfIcons(project.languages.concat(project.libraries), false)}
                 </div>
                 <div className="content-padding white">
                     <div className="favoriteTitle" >
@@ -71,8 +88,8 @@ export class FavoriteProject extends ProjectSummary{
     }
 }const mapDispatchToProps = dispatch => {
     return {
-        projectToDisplay: (project) =>  dispatch({ type: 'POJECT_TO_DISPLAY', project }),
+        projectToDisplay: (project) =>  dispatch({ type: 'PROJECT_TO_DISPLAY', project }),
     }
-  }
+  };
 export default connect(null, mapDispatchToProps)(FavoriteProject);
 ///  <div onMouseEnter={this.onHover} onMouseLeave={this.onblur} style={{verticalAlign: "top"}}>

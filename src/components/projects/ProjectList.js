@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ProjectSummary from './ProjectSummary';
 import FavoriteProject from './FavoriteProject';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -45,7 +44,6 @@ class ProjectList extends Component {
                 {projects && projects.map( (project, index)=>{
                     let addToClass = '';
                     if(index%3===1) {addToClass = "favorite-margin ";}
-                    if(index%3===0) {addToClass = "feature_wrapper ";}
                     return(
                         <FavoriteProject
                             key={project.id}
@@ -67,12 +65,11 @@ class ProjectList extends Component {
     }
 }
 const mapStateToProps = (state)=>{
-    console.log(state);
     return{
         //projects: state.project.projects
         projects: state.firestore.ordered.projects
     };
-}
+};
 
 export default compose(
 connect(mapStateToProps),

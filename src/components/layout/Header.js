@@ -12,8 +12,8 @@ class Header extends Component{
                 <li><a className='nav-link' onClick={() => changeSelection(1)}>Projects</a></li>
                 <li><a className='nav-link' onClick={() => changeSelection(2)} >About Me</a></li>
                 <li><a className='nav-link' onClick={() => changeSelection(3)}>Contact</a></li>
-                <li><a className='nav-link' href='https://github.com/ronen0072'><i className="fab fa-github brand"></i></a></li>
-                <li><a className='nav-link' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin brand"></i></a></li>
+                <li><a className='nav-link' href='https://github.com/ronen0072'><i className="fab fa-github brand"/></a></li>
+                <li><a className='nav-link' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin brand"/></a></li>
             </div>
         );
     };
@@ -25,8 +25,8 @@ class Header extends Component{
                 <li><a className='nav-link' onClick={() => changeSelection(1)}>Projects</a></li>
                 <li><a className='nav-link' onClick={() => changeSelection(2)} >About Me</a></li>
                 <li><a className='nav-link' onClick={() => changeSelection(3)}>Contact</a></li>
-                <li><a className='nav-link' href='https://github.com/ronen0072'><i className="fab fa-github brand"></i> My GitHub</a></li>
-                <li><a className='nav-link' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin brand"></i>My Linkedin</a></li>
+                <li><a className='nav-link' href='https://github.com/ronen0072'><i className="fab fa-github brand"/> My GitHub</a></li>
+                <li><a className='nav-link' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin brand"/>My Linkedin</a></li>
             </div>
         );
     };
@@ -36,11 +36,12 @@ class Header extends Component{
     render() {
 
         return (
-          <nav className="nav-wrapper">
-            <div className="fixed-position halfTransparent">
-                <div className="container">
+          <nav>
+            <div className="nav-wrapper">
+                <div className="my-container">
                     <NavLink to="/" className="brand-logo push-s1">
-                        <span className='logo'>Ronen Finish</span>
+                        <span className='logo'>Ronen </span>
+                        <span className='logo logo-continue'>Finish</span>
                     </NavLink>
                     <ul className="right hide-on-med-and-down">{this.navLinks()}</ul>
                     <a href="#!" data-target="slide-out" className="sidenav-trigger">

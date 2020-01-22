@@ -15,11 +15,10 @@ class Projects extends Component{
     };
     render() {
         return(
-            <div className="my-container page">
+            <div className="my-container">
                 {/*<h4 className="title">Projects</h4>*/}
                 <ProjectList favorites={this.state.toDisplaFfavorites} />
-                <br/>
-                <a onClick={this.handleClick}>{this.state.toDisplaFfavorites? "More projects" : "Less projects"}</a>
+                <button className="bold-link" onClick={this.handleClick}>{this.state.toDisplaFfavorites? "More projects" : "Less projects"}</button>
                 <CreateProject/>
             </div>
         );

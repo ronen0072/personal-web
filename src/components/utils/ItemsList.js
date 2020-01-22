@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import Icons from './Icons'
+import {Icons} from './Icons'
 class ItemsList extends Component {
     state={
         list:[],
         toAdd:""
-    }
+    };
     handleChange = (e) => {
         this.setState({
           [e.target.name]: e.target.value
         });
-      }
+      };
     // componentWillReceiveProps= (nextProps) =>{
     //     this.setState({
     //         list: nextProps.list
@@ -32,7 +32,7 @@ class ItemsList extends Component {
           list: newList
         });
         this.props.remove(listName, removeItem);
-    }
+    };
     add = () => {
         let addItem, listName;
         listName = this.props.listName;
@@ -42,9 +42,9 @@ class ItemsList extends Component {
         let newList = [...(this.state.list), addItem];
         this.setState({
             list: newList
-        })
+        });
         this.props.add(listName, addItem);
-    }
+    };
     displayTheList(){
         let list =this.state.list;
         if(list && list.length > 0){
@@ -66,7 +66,7 @@ class ItemsList extends Component {
         }
         else{
             return(
-                <div></div>
+                <div/>
             );
         }
     }
@@ -75,7 +75,7 @@ class ItemsList extends Component {
         return(
             <div>
                 <div className="input-field col s11 m5 no-padding">
-                    <textarea name="toAdd" className="materialize-textarea" onChange={this.handleChange}></textarea>
+                    <textarea name="toAdd" className="materialize-textarea" onChange={this.handleChange}/>
                     <label htmlFor="toAdd">{this.props.listName}</label>
                     {this.displayTheList()}
                 </div>

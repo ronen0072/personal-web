@@ -26,20 +26,25 @@ class carousel extends Component{
     }
     render() {
         const bmxImg = "url( "+this.publicURL+"bmx.jpg )";
-        const snowbordImg = "url( "+this.publicURL+"snowbord.jpg )";
-        const surfing = "url( "+this.publicURL+"surfing.jpg )";
+        const snowboardImg = "url( "+this.publicURL+"snowboard.jpg )";
+        const surfingImg = "url( "+this.publicURL+"surfing.jpg )";
+        const tripsImg = "url( "+this.publicURL+"trips.jpg )";
         return (
-            <div className="carousel carousel-slider center">
+            <div className="carousel carousel-slider col center">
                 <div className="carousel-item blue white-text" href="#one!" style={{
-                    backgroundImage: surfing
+                    backgroundImage: surfingImg
                 }}>
                 </div>
-                <div className="carousel-item red white-text" href="#one!" style={{
+                <div className="carousel-item red white-text" href="#two!" style={{
                     backgroundImage: bmxImg
                 }}>
                 </div>
-                <div className="carousel-item red white-text" href="#two!" style={{  
-                    backgroundImage: snowbordImg,
+                <div className="carousel-item white white-text" href="#three!" style={{
+                    backgroundImage: snowboardImg,
+                }}>
+                </div>
+                <div className="carousel-item green white-text" href="#four!" style={{
+                    backgroundImage: tripsImg,
                 }}>
                 </div>
             </div>

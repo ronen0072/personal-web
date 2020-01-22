@@ -1,5 +1,5 @@
 import React, {Component, createRef} from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Modal from './components/layout/Modal';
@@ -54,13 +54,13 @@ class App extends Component{
           <div className="App">
             <div ref={this.header}>
               <Header changeSelection={this.changeSelection}/>
-              <Home/>
+              <Home changeSelection={this.changeSelection}/>
             </div>
             <div ref={this.projects}>
               <Projects changeSelection={this.changeSelection}/>
             </div>
             <div ref={this.about}>
-              <About/>
+              <About changeSelection={this.changeSelection}/>
             </div>
             <div ref={this.contact}>
               <Contact/>
@@ -68,7 +68,7 @@ class App extends Component{
             <Modal trigger='project'>
               <Project id='project1' name='temp' info="temp"/>
             </Modal>
-            <Footer/>
+            <Footer changeSelection={this.changeSelection}/>
           </div>
         </BrowserRouter>
     );

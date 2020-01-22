@@ -2,26 +2,30 @@ import React, {Component}from 'react';
 import { connect } from 'react-redux';
 import Section from '../layout/Section';
 import moment from 'moment'; 
-import Icons from '../utils/Icons';
+import {Icons, isIcons} from '../utils/Icons';
 import EditProject from './EditProject';
 
 export class ProjectSummary extends Component{
-    handlClick = (e)=>{
+    publicURL ="https://ronen-finish-personal-web.firebaseapp.com/img/";
+    handleClick = (e)=>{
         const project = this.props;
         this.props.projectToDisplay(project);
     };
-    publicURL ="https://ronen-finish-personal-web.firebaseapp.com/img/";
-
-    displayListOfIcons = (list) =>{
+    displayListOfIcons = (list, displayAnyway) =>{
        return(
            <div>
                 {list && list.map((item,index)=>{
-                    return(
-                        <Icons key={index} name={item} className="brand"/>
-                    )
+                    console.log(item+": ",isIcons(item));
+                    if(displayAnyway||isIcons(item)){
+                        return(
+                            <Icons key={index} name={item} className="brand"/>
+                        )
+                    }
+                    else {
+                        return null;
+                    }
                 })}
            </div>
-        
        )
     };
     displayTitle = ()=>{
@@ -60,7 +64,7 @@ export class ProjectSummary extends Component{
         }
         return(
             <span className="no-padding float-left" style={{ width: width}}>
-                <a onClick={this.handlClick} href="#project" className="btn-style modal-trigger">more info</a>
+                <a onClick={this.handleClick} href="#project" className="btn-style modal-trigger">more info</a>
             </span>
         )
     };
@@ -88,14 +92,14 @@ export class ProjectSummary extends Component{
         if(project && (project.githubURL && project.githubURL !== '')){
             return(
                 <span className={"no-padding"+floatTo} style={{ width: width}}>
-                    <a href={project.githubURL} className="btn-style modal-trigger"><i className="fab fa-github padding-little"></i></a>
+                    <a href={project.githubURL} className="btn-style modal-trigger"><i className="fab fa-github padding-little"/></a>
                 </span>
             )
         }
     };
     displayNavBtn = ()=>{
         return(
-            <div className="project-NavBtn center">
+            <div className="favorites-project-NavBtn center">
                 {this.displayMoreInfo()}
                 {this.displayGithubURL()}
                 {this.displayWebURL()}
@@ -118,7 +122,7 @@ export class ProjectSummary extends Component{
                     <div className="col s12 m12 l4 xl5 white void-padding">
                         {this.displayImg()}
                         <div className="to-bottom">
-                            {this.displayListOfIcons(project.languages)}
+                            {this.displayListOfIcons(project.languages.concat(project.libraries), false)}
                         </div>
                     </div>
                     <div className="col s12 m12 l8 xl7 padding">
@@ -137,7 +141,7 @@ export class ProjectSummary extends Component{
                     <div className="col s12 m12 l4 xl5 white void-padding push-l8 push-xl7">
                         {this.displayImg()}
                         <div className="to-bottom">
-                            {this.displayListOfIcons(project.languages)}
+                            {this.displayListOfIcons(project.languages.concat(project.libraries), false)}
                         </div>
                     </div>
                     <div className="col s12 m12 l8 xl7 padding pull-l4 pull-xl5">
@@ -153,7 +157,7 @@ export class ProjectSummary extends Component{
 }
 const mapDispatchToProps = dispatch => {
     return {
-        projectToDisplay: (project) =>  dispatch({ type: 'POJECT_TO_DISPLAY', project }),
+        projectToDisplay: (project) =>  dispatch({ type: 'PROJECT_TO_DISPLAY', project }),
     }
   };
 export default connect(null, mapDispatchToProps)(ProjectSummary);
