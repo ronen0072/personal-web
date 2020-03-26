@@ -54,7 +54,7 @@ class ItemsList extends Component {
                         //console.log(item.name);
                         return(
                             <li className="collection-item" key={index}>
-                                <button className="btn-floating btn-small"><Icons name={item} className='brand'/></button>
+                                <button className="btn-floating btn-small"><Icons name={item} iconClassName='project-skills-icon'/></button>
                                 <span className='padding-left'>{item}</span>
                                 <button className="btn-floating btn-small red remove" onClick={this.remove}><i  title={item} className="material-icons ">remove</i></button>
                             </li> 

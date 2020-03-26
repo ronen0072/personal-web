@@ -86,7 +86,7 @@ class Project extends FavoriteProject{
                         </div>
                         <div className='row'>
                             {this.displayImg()}
-                            <div className="halfway">
+                            <div>
                                 {this.displayListOfIcons(project.languages && project.languages.concat(project.libraries), true)}
                             </div>
                         </div>

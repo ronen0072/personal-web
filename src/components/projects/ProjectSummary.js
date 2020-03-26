@@ -18,7 +18,7 @@ export class ProjectSummary extends Component{
                     console.log(item+": ",isIcons(item));
                     if(displayAnyway||isIcons(item)){
                         return(
-                            <Icons key={index} name={item} className="brand"/>
+                            <Icons key={index} name={item} className="project-skills-icon"/>
                         )
                     }
                     else {

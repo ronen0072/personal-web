@@ -19,25 +19,28 @@ const About = (props) => {
                         <div className="col s12 m3">
                             <h6 className="home-color sub-title">Languages: </h6>
                             <ul>
-                                <li><Icons name="Java" className="skills-icon"/></li>
-                                <li><Icons name="JavaScript" className="skills-icon"/></li>
-                                <li><Icons name="NodeJS" className="skills-icon"/></li>
-                                <li><Icons name="HTML5" className="skills-icon"/></li>
-                                <li><Icons name="CSS" className="skills-icon"/></li>
-                                <li><Icons name="MongoDB" className="skills-icon"/></li>
-                                <li><Icons name="Python" className="skills-icon"/></li>
-                                <li><Icons name="C" className="skills-icon"/></li>
-                                <li><Icons name="C++" className="skills-icon"/></li>
-                                <li><Icons name="Assembly x86/x87 64bit" className="skills-icon"/></li>
+                                <li><Icons name="Java" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="JavaScript" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="NodeJS" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="HTML5" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="CSS" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="MongoDB" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="Python" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="C" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="C++" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="Assembly x86/x87 64bit" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
                             </ul>
                         </div>
                         <div className="col s12 m7">
                             <h6 className="home-color sub-title">Libraries and Frameworks: </h6>
                             <ul>
-                                <li><Icons name="React" className="skills-icon"/></li>
-                                <li><Icons name="openGL" className="skills-icon"/></li>
-                                <li><Icons name="Keras" className="skills-icon"/></li>
-                                <li><Icons name="jQuery" className="skills-icon"/></li>
+                                <li><Icons name="React" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="Redux" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="jQuery" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="Materialize" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="openGL" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+                                <li><Icons name="Keras" iconClassName="skills-icon" iconClassNaneTitle="skills-icon-title"/></li>
+
                             </ul>
                         </div>
                     </div>

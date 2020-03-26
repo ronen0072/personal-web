@@ -19,7 +19,7 @@ class ProjectList extends Component {
     //3 4 5
     //6 7 8
     displayFavoritesProjects(){
-        const projects =  this.getFavorites();
+        const projects = this.getFavorites();
         return(
             <div className="Favorites-projects-list">
                 {projects && projects.map( (project, index)=>{
@@ -65,6 +65,7 @@ class ProjectList extends Component {
     }
 }
 const mapStateToProps = (state)=>{
+    console.log('state: ',state);
     return{
         //projects: state.project.projects
         projects: state.firestore.ordered.projects

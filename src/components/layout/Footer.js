@@ -16,8 +16,8 @@ const Footer = (props) => {
                     <button className='link grey-text text-lighten-4 margin' onClick={() => changeSelection(3)}>Contact</button>
                     <SignedInLinks />
                     <SignedOutLinks />
-                    <a className='grey-text text-lighten-4 margin' href='https://github.com/ronen0072'><i className="fab fa-github brand"/></a>
-                    <a className='grey-text text-lighten-4 margin' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin brand"/></a>
+                    <a className='grey-text text-lighten-4 margin' href='https://github.com/ronen0072'><i className="fab fa-github project-skills-icon"/></a>
+                    <a className='grey-text text-lighten-4 margin' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin project-skills-icon"/></a>
 
                 </div>
 

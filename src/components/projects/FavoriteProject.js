@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { connect } from 'react-redux';
 import {ProjectSummary} from './ProjectSummary'
 import EditProject from './EditProject'
@@ -11,18 +11,18 @@ export class FavoriteProject extends ProjectSummary{
     };
     displayListOfIcons = (list, displayAnyway) =>{
         return(
-            <div>
+            <Fragment>
                 {list && list.map((item,index)=>{
                     if(displayAnyway||isIcons(item)){
                         return(
-                            <Icons key={index} name={item} className="brand"/>
+                            <Icons key={index} name={item} iconClassName="project-skills-icon"/>
                         )
                     }
                     else {
                         return null;
                     }
                 })}
-            </div>
+            </Fragment>
 
         )
     };
@@ -77,7 +77,7 @@ export class FavoriteProject extends ProjectSummary{
                     {this.displayListOfIcons(project.languages.concat(project.libraries), false)}
                 </div>
                 <div className="content-padding white">
-                    <div className="favoriteTitle" >
+                    <div className="favoriteTitle">
                         {this.displayTitle()}
                     </div>
                     {this.displayContent()}
