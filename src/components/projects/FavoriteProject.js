@@ -15,7 +15,7 @@ export class FavoriteProject extends ProjectSummary{
                 {list && list.map((item,index)=>{
                     if(displayAnyway||isIcons(item)){
                         return(
-                            <Icons key={index} name={item} iconClassName="project-skills-icon"/>
+                            <Icons key={index} name={item} iconClassName="project-skills-icon" iconClassNaneTitle="project-skills-title"/>
                         )
                     }
                     else {

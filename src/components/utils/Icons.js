@@ -47,15 +47,15 @@ const svgIcons = new Map([
         </Fragment>],
     ['passport',
         <Fragment>
+            <polygon stroke="null" opacity='0.8'
+                     points="7.945201588307555,18.82547378540039 7.945201588307555,10.39151668548584 3.8904215555774044,10.39151668548584 3.8904215555774044,23.042465209960938 11.999998724978923,23.042465209960938 11.999998724978923,18.82547378540039 "/>
             <path stroke="null"
                   d="m12,1.957534c-4.479452,0 -8.109589,3.775343 -8.109589,8.433973l4.054794,0c0,-2.329315 1.815068,-4.216986 4.054794,-4.216986l0,-4.216986z"/>
-            <path stroke="null"
+            <path stroke="null" opacity='0.8'
                   d="m20.109589,10.391507c0,-4.65863 -3.630137,-8.433973 -8.109589,-8.433973l0,4.216986c2.239726,0 4.054794,1.887671 4.054794,4.216986l4.054794,0z"/>
             <path stroke="null"
                   d="m12,18.82548c4.479452,0 8.109589,-3.775343 8.109589,-8.433973l-4.054794,0c0,2.329315 -1.815068,4.216986 -4.054794,4.216986l0,4.216986z"/>
-            <polygon stroke="null"
-                     points="7.945201588307555,18.82547378540039 7.945201588307555,10.39151668548584 3.8904215555774044,10.39151668548584 3.8904215555774044,23.042465209960938 11.999998724978923,23.042465209960938 11.999998724978923,18.82547378540039 "/>
-        </Fragment>],
+             </Fragment>],
     ['Materialize',
         <Fragment>
             <svg xmlns="http://www.w3.org/2000/svg" stroke="null" y="-0.5rem" x="0"
@@ -240,6 +240,16 @@ const svgIcons = new Map([
                 <path
                     d="M135.592 281.48v-67.7l27.49-27.404 68.963 101.91 31.587.248 5.832-11.905-80.248-116.415 73.876-75.108-4.09-11.909H227.48l-91.888 91.863V80.21l-6.717-7.013H106.06l-6.718 7.012v200.976l7.075 7.19 21.985-.088z"
                     fill="#fff"/>
+            </svg>
+        </Fragment>
+    ],
+    ['Assembly x86/x87 64bit',
+        <Fragment>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 364.66507 364.66507" y="0.15rem" height="1.5rem" width="1.5rem">
+                <rect stroke="#000" id="svg_1" height="403.999971" width="401.000004" y="-2.546864" x="-3.500001" stroke-width="1.5" fill="#fff"/>
+                <text font-style="normal" stroke="#000" font-weight="bold" text-anchor="start" font-family="'League Gothic', sans-serif" font-size="180" id="svg_3" y="262" x="210" fill="#000">M</text>
+                <text font-style="normal" stroke="#000" font-weight="bold" text-anchor="start" font-family="'League Gothic', sans-serif" font-size="180" id="svg_4" y="262" x="7" fill="#000">A</text>
+                <text font-style="normal" stroke="#000" font-weight="bold" text-anchor="start" font-family="'League Gothic', sans-serif" font-size="180" id="svg_5" y="262" x="100" fill="#000">S</text>
             </svg>
         </Fragment>
     ],
