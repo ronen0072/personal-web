@@ -16,7 +16,7 @@ const About = (props) => {
                     <p className="no-margin-top-bottom">strong team player with great work ethics and entrepreneurial mind set. I’m a very inquisitive person and an autodidact. <br/> 
                     Experience working with <i titel="Java" className="fab fa-linux skils-icon"/> Linux systems and git <i titel="Java" className="fab fa-github skils-icon"/>. </p>
                     <div className="row no-margin">
-                        <div className="col s12 m3">
+                        <div className="col s12 m7 l4">
                             <h6 className="home-color sub-title">Languages: </h6>
                             <ul>
                                 <li><Icons name="Java" iconClassName="skills-icon" iconClassNaneTitle="skills-title"/></li>
@@ -31,13 +31,14 @@ const About = (props) => {
                                 <li><Icons name="Assembly x86/x87 64bit" iconClassName="skills-icon" iconClassNaneTitle="skills-title"/></li>
                             </ul>
                         </div>
-                        <div className="col s12 m7">
+                        <div className="col s12 m4 l8">
                             <h6 className="home-color sub-title">Libraries and Frameworks: </h6>
                             <ul>
                                 <li><Icons name="React" iconClassName="skills-icon" iconClassNaneTitle="skills-title"/></li>
                                 <li><Icons name="Redux" iconClassName="skills-icon" iconClassNaneTitle="skills-title"/></li>
                                 <li><Icons name="jQuery" iconClassName="skills-icon" iconClassNaneTitle="skills-title"/></li>
                                 <li><Icons name="Materialize" iconClassName="skills-icon" iconClassNaneTitle="skills-title"/></li>
+                                <li><Icons name="express" iconClassName="skills-icon" iconClassNaneTitle="skills-title"/></li>
                                 <li><Icons name="openGL" iconClassName="skills-icon" iconClassNaneTitle="skills-title"/></li>
                                 <li><Icons name="Keras" iconClassName="skills-icon" iconClassNaneTitle="skills-title"/></li>
 

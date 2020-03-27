@@ -164,7 +164,7 @@ body::after {
     width: var(--font-size);
 }
 
-.skills-icon-title {
+.skills-title {
     font-size: var(--font-size);
     color: var(--skills-icon);
     margin-left: 0.7rem;
@@ -179,6 +179,11 @@ body::after {
     margin-right: 0.7vh;
     height: var(--project-skills-icon-font-size);
     width: var(--project-skills-icon-font-size);
+}
+
+.project-skills-title {
+    font-size: var(--project-skills-icon-font-size);
+    color: rgba(175, 130, 5, 0.9);
 }
 
 .skills-icon-svg {
