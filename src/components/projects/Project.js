@@ -29,7 +29,7 @@ class Project extends FavoriteProject{
                 <span className="no-padding">
                     <a
                         href={project.webURL}
-                        className="btn-style btn-project  vertical-text modal-trigger" style={{zIndex: "2"}}>to view</a>
+                        className="btn-style btn-project  vertical-text modal-trigger" style={{zIndex: "2"}}>Open</a>
                 </span>
             )
         }

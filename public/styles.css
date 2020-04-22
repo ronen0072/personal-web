@@ -2,24 +2,25 @@
     --font-size: 1.4rem;
     --fontColorVal: 0, 0, 0;
     --fontColor: rgb(var(--fontColorVal));
-    --font-section-color: rgb(255, 255, 255);
-    --gold: rgb(211, 166, 44);
-    --dark: rgb(255, 255, 255);
+    --font-section-color: rgb(36, 36, 36);
+    --bright-gold: rgb(225, 176, 47);
+    --gold: rgb(173, 137, 35);
+    --background-color: rgb(224, 224, 224);
     --navfoot: rgba(11, 11, 11, 0.89);
-    --sectionClor: rgb(36, 36, 36);
+    --sectionClor: rgb(255, 255, 255);
     --homeColor: rgb(36, 36, 36);
     /*rgb(49, 132, 143);*/
-    --fontTitle: rgb(34, 67, 79);
+    --fontTitleColor: rgb(36, 36, 36);
     --transparent: rgba(143, 143, 143, 0);
     --logo: rgb(255, 250, 246);
-    --skills-icon: rgb(255, 255, 255);
+    --skills-icon: rgb(36, 36, 36);
     --my-container-margin: 10vw;
     --project-info-padding: 2vw;
     --project-content-padding: 1vw;
     --section-padding: calc(1rem + 0.5vw);
     /*--favorite-Project-img-Size: calc(22vh + 10vh);*/
     --project-nav-link-height: 36px;
-    --favorite-Project-info-margin-top-botton: calc(0.2rem + 0.2vw);
+    --favorite-Project-info-margin-top-botton: calc(0.1rem + 0.1vw);
     --favoriteProject-img-padding: 1vw;
     --project-title-top-margin: 1rem;
     --project-title-font-size: calc(0.6vw + 1.8rem);
@@ -66,7 +67,7 @@ html {
 }
 
 body {
-    background-color: var(--dark);
+    background-color: var(--background-color);
     background-size: 100%;
     background-position: center;
     min-height: 100%;
@@ -74,6 +75,7 @@ body {
     margin: 0;
     font-family: Arimo, GeogrotesqueUltraLight, Arial, Helvetica, sans-serif;
     font-size: var(--font-size);
+    line-height: 1.3em;
     color: var(--fontColor);
 }
 
@@ -139,8 +141,8 @@ body::after {
 .title {
     margin: 1vw calc(-35px - 3vw) 0 calc(-35px - 3vw);
     padding: 0.2vw 4vw;
-    color: var(--gold);
-    background-color: var(--fontTitle);
+    color: var(--bright-gold);
+    background-color: var(--fontTitleColor);
     font-family: 'Kanit', sans-serif;
     display: inline-block;
     font-size: 3rem;
@@ -151,6 +153,7 @@ body::after {
 .sub-title {
     margin-right: 0.3rem;
     font-family: Arimo, GeogrotesqueUltraLight, Arial, Helvetica, sans-serif;
+    font-weight: 600;
     /*font-size: var(--font-size);*/
 }
 
@@ -397,7 +400,11 @@ nav {
     color: white;
     margin-bottom: -220px;
 }
-
+.welcome{
+    text-align: center;
+    line-height: 1.8em;
+    font-size: calc(var(--font-size)*1.1);
+}
 .fixed-in-right {
     position: fixed;
     right: 0.5vw;
@@ -620,7 +627,7 @@ nav {
     text-overflow: ellipsis;
     word-wrap: break-word;
     overflow: hidden;
-    line-height: 1.8em;
+    line-height: 1.2em;
     display: -webkit-box;
     max-width: 100%;
     -webkit-box-orient: vertical;
@@ -659,7 +666,7 @@ nav {
 .btn-style {
     display: inline-block;
     height: var(--project-nav-link-height);
-    background-color: rgb(238, 238, 238);
+    background-color: rgba(255, 255, 255, 0.82);
     color: var(--gold);
     width: 100%;
     font-weight: bold;
@@ -672,7 +679,7 @@ nav {
 }
 
 .btn-style:hover {
-    background-color: var(--gold);
+    background-color: var(--bright-gold);
     color: rgb(238, 238, 238);
 }
 

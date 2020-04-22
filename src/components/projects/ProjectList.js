@@ -68,7 +68,7 @@ const mapStateToProps = (state)=>{
     console.log('state: ',state);
     return{
         //projects: state.project.projects
-        projects: state.firestore.ordered.projects
+        projects: state.firestore.ordered.projects && state.firestore.ordered.projects.sort((p1, p2)=>{return p1.numOrder - p2.numOrder})
     };
 };
 

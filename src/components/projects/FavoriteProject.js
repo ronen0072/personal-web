@@ -56,6 +56,7 @@ export class FavoriteProject extends ProjectSummary{
         info.classList.add(className+'-out');
         img.classList.remove('favoriteProject-img-in');
         img.classList.add('favoriteProject-img-out');
+        // console.log('project: ',this.props);
     };
     displayContent = ()=>{
         const project = this.props;

@@ -76,7 +76,7 @@ export class ProjectSummary extends Component{
                 <span className="no-padding float-right" style={{ width: width}}>
                     <a
                         href={project.webURL}
-                       className="btn-style modal-trigger">to view</a>
+                       className="btn-style modal-trigger">Open</a>
                 </span>
             )
         }

@@ -9,12 +9,14 @@ const About = (props) => {
         <div className="my-container page">
                 <Section className="section-padding">
                     <h4 className="title">About Me</h4>
-                    <p>My name is Ronen Finish and I'm Software/Web Developer, Bachelor of Science in Computer Science, Ben-Gurion University,  Be’er Sheva.  Graduated in 2019.
-                    In these days I’m seeking a position as a Developer, which will integrate my passion for technology with my programming knowledge and out of the box thinking. 
+
+                    <p>
+                        I am a software developer and a Computer Science B.Sc graduate, Ben-Gurion University.
+                        In these days I am looking for a job as a Developer, preferably a Full Stack position.
+                        I am a technology fan, really enjoy learning new things and facing challenges.
                     </p>
-                    <h5 className="no-margin-top-bottom home-color">Skils:</h5>
-                    <p className="no-margin-top-bottom">strong team player with great work ethics and entrepreneurial mind set. I’m a very inquisitive person and an autodidact. <br/> 
-                    Experience working with <i titel="Java" className="fab fa-linux skils-icon"/> Linux systems and git <i titel="Java" className="fab fa-github skils-icon"/>. </p>
+                    <h5 className="no-margin-top-bottom home-color sub-title">Skils:</h5>
+
                     <div className="row no-margin">
                         <div className="col s12 m7 l4">
                             <h6 className="home-color sub-title">Languages: </h6>
@@ -45,7 +47,10 @@ const About = (props) => {
                             </ul>
                         </div>
                     </div>
-                    
+                    <br/>
+                    <p className="no-margin-top-bottom">
+                        Experience working with Linux systems <i titel="Java" className="fab fa-linux skils-icon"/> and git <i titel="Java" className="fab fa-github skils-icon"/>.
+                    </p>
                     <h5 className="home-color sub-title display-inline">IDE:</h5>Visual Studio, Eclipse, Atom, Anaconda, Intellij, CLion.<br/>
                     You can view works on my <button className="link" onClick={() => changeSelection(1)}>projects</button> or my <a className="link" href='https://github.com/ronen0072'>github <i titel="Java" className="fab fa-github link"/></a>.<br/><br/>
                 </Section>
@@ -55,10 +60,11 @@ const About = (props) => {
                         <div className="col s12 m7 section-padding">
                             <h4 className="title">More About Me</h4>
                             <p>
-                                After a long day at the office I love work in the garden and build wooden furniture.
+                                After a long day at the office I love work in the garden and build things from wood.
                                 My favorite sports are snowboarding and BMX; I have formed a crew: B7MX,
-                                Our name is the Compound of Beer Seven (B7) and BMX which is the sport we love.
-                                Every year we organize events in goal of advancing the field in Israel in particular in the city we worked with the municipality toward building a bike park and I run our  <a className="link" href='https://www.instagram.com/b7mx_crew/'>instagram page <i titel="Java" className="fab fa-instagram link"/></a> .
+                                Our name is the combination of Beer Seven (B7) and BMX which is the sport we love.
+                                Every year we organize events in goal of advancing the field in Israel in particular in the city,
+                                we worked with the municipality toward building a bike park and I run our  <a className="link" href='https://www.instagram.com/b7mx_crew/'>instagram page <i titel="Java" className="fab fa-instagram link"/></a> .
                                 One of the important things I learned from the field and helped me in life, is that even when you fall,
                                 get up, analyze the mistake and try again and again to success without concessions.
                             </p>
