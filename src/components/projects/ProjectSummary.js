@@ -55,51 +55,52 @@ export class ProjectSummary extends Component{
     };
     displayMoreInfo = ()=>{
         let project = this.props;
-        let width = "100%";
+        let width = " col s12";
         if(project && (project.githubURL && project.githubURL !== '')){
-            width = "49.75%";
+            width = " col s6";
         }
         if(project && project.webURL && project.webURL !== '') {
-            width = "33%";
+            width = " col s4";
         }
         return(
-            <span className="no-padding float-left" style={{ width: width}}>
+            <div className={"no-padding" + width} >
                 <a onClick={this.handleClick} href="#project" className="btn-style modal-trigger">more info</a>
-            </span>
+            </div>
         )
     };
     displayWebURL = ()=>{
         let project = this.props;
-        let width = "33%";
+        let width = " col s6 btn-style-right";
+        if(project && (project.githubURL && project.githubURL !== '')){
+            width = " col s4";
+        }
         if(project &&  (project.webURL && project.webURL !== '')){
             return(
-                <span className="no-padding float-right" style={{ width: width}}>
+                <div className={"no-padding" + width}>
                     <a
                         href={project.webURL}
                        className="btn-style modal-trigger">Open</a>
-                </span>
+                </div>
             )
         }
     };
     displayGithubURL = ()=>{
         let project = this.props;
-        let floatTo = ' float-right';
-        let width = "49.75%";
+        let width = " col s6 btn-style-right";
         if(project && project.webURL && project.webURL !== '') {
-            floatTo = ' float-center';
-            width = "33%";
+            width = " col s4 btn-style-center";
         }
         if(project && (project.githubURL && project.githubURL !== '')){
             return(
-                <span className={"no-padding"+floatTo} style={{ width: width}}>
+                <div className={"no-padding"+width}>
                     <a href={project.githubURL} className="btn-style modal-trigger"><i className="fab fa-github padding-little"/></a>
-                </span>
+                </div>
             )
         }
     };
     displayNavBtn = ()=>{
         return(
-            <div className="favorites-project-NavBtn center">
+            <div className="favorites-project-NavBtn center row">
                 {this.displayMoreInfo()}
                 {this.displayGithubURL()}
                 {this.displayWebURL()}

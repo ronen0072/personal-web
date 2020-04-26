@@ -3,6 +3,8 @@ import FavoriteProject from './FavoriteProject';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import ProjectsSwiper from './ProjectsSwiper';
+import Section from "../layout/Section";
 
 class ProjectList extends Component {
     getFavorites(){
@@ -19,21 +21,22 @@ class ProjectList extends Component {
     //3 4 5
     //6 7 8
     displayFavoritesProjects(){
-        const projects = this.getFavorites();
+        const projects = this.props.projects;
         return(
             <div className="Favorites-projects-list">
-                {projects && projects.map( (project, index)=>{
-                    let addToClass = '';
-                    if(index%3===1) {addToClass = "favorite-margin ";}
-                    return(
-                            <FavoriteProject
-                                key={project.id}
-                                className={"project-col "+addToClass}
-                               index={index}
-                               {...project}
-                           />
-                    )
-                })}
+                {/*{projects && projects.map( (project, index)=>{*/}
+                {/*    let addToClass = '';*/}
+                {/*    if(index%3===1) {addToClass = "favorite-margin ";}*/}
+                {/*    return(*/}
+                {/*            <FavoriteProject*/}
+                {/*                key={project.id}*/}
+                {/*                className={"project-col favorite-margin "}*/}
+                {/*               index={index}*/}
+                {/*               {...project}*/}
+                {/*           />*/}
+                {/*    )*/}
+                {/*})}*/}
+                <ProjectsSwiper projects={projects}/>
             </div>
         )
     }
@@ -47,7 +50,7 @@ class ProjectList extends Component {
                     return(
                         <FavoriteProject
                             key={project.id}
-                            className={"project-col "+addToClass}
+                            className={"project-col favorite-margin "}
                             index={index}
                             {...project}
                         />

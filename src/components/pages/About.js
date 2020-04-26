@@ -15,7 +15,7 @@ const About = (props) => {
                         In these days I am looking for a job as a Developer, preferably a Full Stack position.
                         I am a technology fan, really enjoy learning new things and facing challenges.
                     </p>
-                    <h5 className="no-margin-top-bottom home-color sub-title">Skils:</h5>
+                    <h5 className="no-margin-top-bottom home-color sub-title">skills:</h5>
 
                     <div className="row no-margin">
                         <div className="col s12 m7 l4">
@@ -60,13 +60,12 @@ const About = (props) => {
                         <div className="col s12 m7 section-padding">
                             <h4 className="title">More About Me</h4>
                             <p>
-                                After a long day at the office I love work in the garden and build things from wood.
-                                My favorite sports are snowboarding and BMX; I have formed a crew: B7MX,
-                                Our name is the combination of Beer Seven (B7) and BMX which is the sport we love.
-                                Every year we organize events in goal of advancing the field in Israel in particular in the city,
-                                we worked with the municipality toward building a bike park and I run our  <a className="link" href='https://www.instagram.com/b7mx_crew/'>instagram page <i titel="Java" className="fab fa-instagram link"/></a> .
-                                One of the important things I learned from the field and helped me in life, is that even when you fall,
-                                get up, analyze the mistake and try again and again to success without concessions.
+                                After a long day at the office I love to work in the garden and Build furniture.
+                                My favorite sports are snowboarding and BMX; I have formed the: B7MX crew, is group of local riders in the city of Beer Sheva.
+                                we worked with the municipality toward building a bike park,
+                                every year we organize events to promote the field in Israel and I run our
+                                <a className="link" href='https://www.instagram.com/b7mx_crew/'> instagram page <i titel="Java" className="fab fa-instagram link"/></a> .
+                                One of the important things I learned from the field and helped me in life is even when I failed, get up, learn from it and try again and again Until I make it.
                             </p>
                         </div>
                         <div className="col s12 m5 no-padding">

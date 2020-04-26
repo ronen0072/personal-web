@@ -9,6 +9,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-firebaseui": "^4.0.0",
+    "react-id-swiper": "^3.0.0",
     "react-redux": "^5.0.7",
     "react-redux-firebase": "^2.1.6",
     "react-router-dom": "^5.1.2",
@@ -16,7 +17,8 @@
     "redux": "^4.0.4",
     "redux-firestore": "^0.5.7",
     "redux-thunk": "^2.3.0",
-    "save": "^2.4.0"
+    "save": "^2.4.0",
+    "swiper": "^5.3.8"
   },
   "scripts": {
     "start": "react-scripts start",

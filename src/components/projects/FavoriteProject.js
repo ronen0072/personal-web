@@ -5,6 +5,10 @@ import EditProject from './EditProject'
 import {Icons, isIcons} from "../utils/Icons";
 
 export class FavoriteProject extends ProjectSummary{
+    state = {
+        infoClassName: 'favorite-Project-info-initiali',
+        imgClassName: 'favoriteProject-img-initiali',
+    };
     handleClick = ()=>{
         const project = this.props;
         this.props.projectToDisplay(project);
@@ -26,43 +30,39 @@ export class FavoriteProject extends ProjectSummary{
 
         )
     };
+
     displayImg = ()=>{
         const project = this.props;
         return(
             <div id={"img_"+project.id } style={{
                 backgroundImage: "url("+this.publicURL+(project && project.imgFileName)+".jpg )",
-                }} className="favoriteProject-img favoriteProject-img-initiali">
-                <EditProject project={project}/>
+                }} className={"favoriteProject-img " + this.state.imgClassName}>
+               {this.props.display && <EditProject project={project}/>}
             </div>
         )
     };
-    onHover = ()=>{
-        let className = "favorite-Project-info";
-        let img = document.getElementById("img_"+this.props.id);
-        let info = document.getElementById("info-"+this.props.id);
-        info.classList.remove(className+'-out');
-        info.classList.remove(className+'-initiali');
-        info.classList.add(className+'-in');
-        img.classList.remove('favoriteProject-img-out');
-        img.classList.remove('favoriteProject-img-initiali');
-        img.classList.add('favoriteProject-img-in');
-        };
-    onblur= ()=>{
-        let className = "favorite-Project-info";
-        let img = document.getElementById("img_"+this.props.id);
-        let info = document.getElementById("info-"+this.props.id);
 
-        info.classList.remove(className+'-in');
-        info.classList.add(className+'-out');
-        img.classList.remove('favoriteProject-img-in');
-        img.classList.add('favoriteProject-img-out');
-        // console.log('project: ',this.props);
+    onHover = ()=>{
+        if(this.props.display)
+            this.setState({
+                infoClassName: 'favorite-Project-info-in',
+                imgClassName: 'favoriteProject-img-in'
+            });
     };
+
+    onblur= ()=>{
+        if(this.props.display)
+            this.setState({
+                infoClassName: 'favorite-Project-info-out',
+                imgClassName: 'favoriteProject-img-out'
+            });
+    };
+
     displayContent = ()=>{
         const project = this.props;
         return(
             <div className="favorite-Project-info-wrapper">
-                <p id={"info-"+project.id} className="favorite-Project-info favorite-Project-info-initiali">{project && project.content}</p>
+                <p id={"info-"+project.id} className={'favorite-Project-info ' + this.state.infoClassName}>{project && project.content}</p>
             </div>
 
 
@@ -72,7 +72,7 @@ export class FavoriteProject extends ProjectSummary{
         // console.log(this.props);
         const project = this.props;
         return(
-            <div className={this.props.className+"void-padding favoriteProject "} onTouchStart={this.onHover} onMouseEnter={this.onHover} onTouchEnd={this.onblur} onMouseLeave={this.onblur}>
+            <div className={this.props.className+" void-padding favoriteProject "} onTouchStart={this.onHover} onMouseEnter={this.onHover} onTouchEnd={this.onblur} onMouseLeave={this.onblur}>
                 {this.displayImg()}
                 <div className="halfway">
                     {this.displayListOfIcons(project.languages.concat(project.libraries), false)}
