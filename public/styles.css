@@ -32,11 +32,11 @@
     --favorite-Project-img-Size-in: 0.5;
     --favorite-Project-info-Size-out: 0;
     --favorite-Project-info-Size-in: 0.5;
-    --favorite-Project-Size: 60vh;
+    --favorite-Project-Size: 65vh;
     --favorite-Project-dynamic-space: calc(
             var(--favorite-Project-Size) -
             var(--project-title-font-height) -
-            var(--project-nav-link-height)
+            calc(var(--project-nav-link-height)*2.2)
     );
     --favorite-Project-speed--animation: 0.3s;
 }
@@ -501,11 +501,11 @@ nav {
 }
 
 .favoriteProject {
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
     overflow: hidden !important;
     height: var(--favorite-Project-Size);
     display: inline-block;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     background-color: var(--background-color);
 }
 
@@ -742,33 +742,90 @@ nav {
     background-size: cover !important;
 }
 .swiper{
-    width: 140%;
+    width: 100%;
     height: 65vh;
     position: relative;
     left: 1%;
 }
-.swiper-item{
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.21);
-    opacity: 50%;
+
+.Swiper{
+    position: relative;
+    right: 6.5%;
+    width: 60%;
+    margin: 0 !important;
+    display: flex;
+    alignItems: center;
+    justifyContent: center;
 }
+.swiper-wrapper{
+    width: 100% !important;
+}
+.swiper-container, .swiper-wrapper{
+    height: 100%;
+    position: relative;
+    display: flex;
+    alignItems: center;
+    justifyContent: center;
+}
+.swiper-slide{
+    position: relative;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.21);
+    bottom: 2rem;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+    background-color: var(--background-color);
+}
+
+.swiper-slide-active{
+    position: relative;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+    bottom: 0;
+}
+
+.swiper-center-item{
+    opacity: 100%;
+    animation-name: swiper-center-item-animation;
+    animation-timing-function: ease-in;
+    animation-duration: 0.3s;
+}
+@keyframes swiper-center-item-animation {
+    from {
+        opacity: 80%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+.swiper-item{
+    opacity: 80%;
+    animation-name: swiper-item-animation;
+    animation-timing-function: ease-in;
+    animation-duration: 0.3s;
+}
+
+@keyframes swiper-item-animation {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 80%;
+    }
+}
+
 .swiper-left-item, .swiper-right-item {
     z-index: 0;
     width: 27.5%;
     border-radius: 10px 10px 10px 10px;
     background-color: var(--background-color);
 }
+
+
 .swiper-left-item, .swiper-right-item, .swiper-center-item{
     overflow: visible;
     display: inline-block;
 }
 
-.swiper-center-item{
-    position: relative;
-    right: 45%;
-    top: 2rem;
-    width: 45%;
-    box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.5);
-}
+
 .swiper-right-item{
     position: relative;
     left: 10%;

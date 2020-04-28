@@ -1,50 +1,73 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import M from "materialize-css";
 import FavoriteProject from "./FavoriteProject";
+import ProjectDisplay from "./ProjectDisplay";
 import Swiper from 'react-id-swiper';
 // Version >= 2.4.0
 import 'swiper/css/swiper.css';
 
-function ProjectsSwiper(props) {
-    const [projectDisplayIndex, setProjectDisplayIndex] =  useState(0);
-    const [classN, setclassN] =  useState('');
+const ProjectsSwiper = (props) => {
+    const  publicURL ="https://ronen-finish-personal-web.firebaseapp.com/img/";
+    const [h,setH] = useState('500px');
+    const [slideIndex,setSlideIndex] = useState(2);
+    const params = {
+        pagination: {
+            clickable: true
+        },
+        spaceBetween: 0,
+        effect: "coverflow",
+        centeredSlides: true,
+        slidesPerView: 3,
+        setWrapperSize: true,
+        speed: 500,
+        initialSlide: slideIndex,
+        coverflowEffect: {
+            rotate: 14.795, // Slide rotate in degrees
+            stretch: 0, // Stretch space between slides (in px)
+            depth: 380, // Depth offset in px (slides translate in Z axis)
+            modifier: 2, // Effect multipler
+            slideShadows: true // Enables slides shadows
+        },
+        on: {
+            slideChange: function () {
+                const activeIndex = document.getElementsByClassName('swiper-container')[0].swiper.activeIndex;
+                setSlideIndex( document.getElementsByClassName('swiper-container')[0].swiper.activeIndex);
+                console.log('slideChange: ',activeIndex);
+
+            },
+        }
+    };
+    const getIndex = ()=>{
+        const div = document.getElementsByClassName('swiper-container')[0].swiper.activeIndex;
+        console.log('getIndex: ', div );
+    };
+    if(props.projects)
     return (
-        <div className='swiper'>
-            <div className={'swiper-left-item '  + classN} onClick={()=>{
-                setProjectDisplayIndex((projectDisplayIndex+1)%props.projects.length);
-            }}>
-                {props.projects &&
-                <FavoriteProject
-                    className={'swiper-item'}
-                    index={projectDisplayIndex}
-                    {...props.projects[(projectDisplayIndex+1)%props.projects.length]}
-                />
-                }
-            </div>
-            <div className={'swiper-right-item'} onClick={()=>{
-                setProjectDisplayIndex(((projectDisplayIndex===0)? props.projects.length -1 : projectDisplayIndex -1));
-            }}>
-                {props.projects &&
-                <FavoriteProject
-                    className={'swiper-item'}
-                    index={projectDisplayIndex}
-                    {...props.projects[((projectDisplayIndex===0)? props.projects.length -1 : projectDisplayIndex -1)]}
-                />
-                }
-            </div>
+        <div className={'Swiper'}>
+            <Swiper {...params}>
+                {props.projects && props.projects.map( (project, index)=>{
+                    return(
+                        <div style={{width: '650px'}} onClick={()=>{getIndex()}}>
+                            <ProjectDisplay
+                                key={project.id}
+                                className={index === slideIndex? "swiper-center-item" : 'swiper-item'}
+                                index={index}
+                                displayContent={index === slideIndex}
+                                {...project}
+                            />
+                        </div>
+                    )
+                })}
 
-            {props.projects &&
-            <FavoriteProject
-                className={'swiper-center-item'}
-                index={projectDisplayIndex}
-                {...props.projects[projectDisplayIndex]}
-                display={true}
-            />
-            }
-
-
+                <ProjectDisplay className={"project-col"} {...props.projects[1]}
+                                index={4}
+                                displayContent={4 === slideIndex}/>
+                {/*<ProjectDisplay className={"project-col"} {...props.projects[2]}/>*/}
+                {/*<ProjectDisplay className={"project-col"} {...props.projects[3]}/>*/}
+            </Swiper>
         </div>
     );
+    else  return null;
 };
 
 export default ProjectsSwiper;

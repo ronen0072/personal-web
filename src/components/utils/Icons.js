@@ -257,7 +257,7 @@ const svgIcons = new Map([
 ]);
 const Icons = (props) => {
     let icomName;
-    if (!isIcons(props.name) || !props.iconClassName.includes("project-skills-icon")) {
+    if (!isIcons(props.name) || !(props.iconClassName.includes("project-skills-icon"))) {
         icomName = props.name;
     }
     if (isIcons(props.name)) {
