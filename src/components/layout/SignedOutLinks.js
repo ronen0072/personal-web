@@ -10,7 +10,7 @@ class SingedOutLinks extends Component{
     render(){
         return(
             (this.props.isLogin)? 
-            <button onClick={() => firebase.auth().signOut()} className="link grey-text text-lighten-4 margin">Admin Out</button>
+            <button onClick={() => firebase.auth().signOut()} className="link grey-text text-lighten-4 margin-right">Admin Out</button>
             : null
         )
     }

@@ -1,110 +1,157 @@
-import React from 'react';
-import {FavoriteProject} from './FavoriteProject';
-import { connect } from 'react-redux';
+import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
 import Section from '../layout/Section';
 import EditProject from './EditProject';
-// state= {name: '',info: '',date:''};
-//     initState = (name,info,date)=>{
-//         name,
-//         info,
-//         date
-//     }
-class Project extends FavoriteProject{
-    displayImg = ()=>{
-        const project = this.props;
-        return(
-            <div id={"img_"+project.id } style={{
-                backgroundImage: "url("+this.publicURL+(project && project.imgFileName)+".jpg )",
-            }} className="favoriteProject-img favoriteProject-img-initiali">
+import moment from "moment";
+import {Icons, isIcons} from "../utils/Icons";
+
+const publicURL = "https://ronen-finish-personal-web.firebaseapp.com/img/";
+
+function Project(project) {
+    const displayImg = () => {
+
+        return (
+            <img className="project-img" id={"img_" + project.id}
+                 src={publicURL + (project && project.imgFileName) + ".jpg"} alt={project.title}/>
+        );
+    };
+
+    const displayListOfIcons = (list, displayAnyway) => {
+        return (
+            <Fragment>
+                {list && list.map((item, index) => {
+                    if (displayAnyway || isIcons(item)) {
+                        return (
+                            <Icons key={index} name={item} iconClassName="project-skills-icon"
+                                   iconClassNaneTitle="project-skills-title"/>
+                        )
+                    } else {
+                        return null;
+                    }
+                })}
+            </Fragment>
+
+        )
+    };
+
+    const displayTitle = () => {
+        return (
+            <div>
+                <h3 className='project-title display-inline'>{project && project.title}</h3>
+                <h5 className='project-sub-title grey-text display-inline'>{project && project.sub_title}</h5>
             </div>
         )
     };
 
-    displayMoreInfo = ()=>{
+    const displayDate = () => {
+        if (project && project.date) {
+            return (
+                <div id="project-date" className="grey-text">last update: {moment(project && project.date.toDate()).calendar()}</div>
+            )
+        }
     };
-    displayWebURL = ()=>{
-        let project = this.props;
-        if(project &&  (project.webURL && project.webURL !== '')){
-            return(
+
+    const displayWebURL = () => {
+        if (project && (project.webURL && project.webURL !== '')) {
+            return (
                 <span className="no-padding">
                     <a
+                        target="_blank"
+                        rel="noopener noreferrer"
                         href={project.webURL}
                         className="btn-style btn-project  vertical-text modal-trigger" style={{zIndex: "2"}}>Open</a>
                 </span>
             )
         }
     };
-    displayGithubURL = ()=>{
-        let project = this.props;
-        if(project && (project.githubURL && project.githubURL !== '')){
-            return(
-                <span className={"no-margin no-padding"}  >
-                    <a href={project.githubURL} className="btn-style btn-project modal-trigger " style={{zIndex: '3'}}><i className="fab fa-github padding-little"/></a>
+    const displayGithubURL = () => {
+
+        if (project && (project.githubURL && project.githubURL !== '')) {
+            return (
+                <span className={"no-margin no-padding"}>
+                    <a target="_blank" rel="noopener noreferrer" href={project.githubURL} className="btn-style btn-project modal-trigger "
+                       style={{zIndex: '3'}}><i className="fab fa-github padding-little"/></a>
                 </span>
             )
         }
     };
-    displayEdit = ()=>{
-        let project = this.props;
-        if(project && (project.githubURL && project.githubURL !== '')){
-            return(
+    const displayEdit = () => {
+        if (project && (project.githubURL && project.githubURL !== '')) {
+            return (
                 <span className={"no-margin no-padding"} style={{zIndex: '1'}}>
-                    <EditProject project={project} className="btn-style btn-project" />
+                    <EditProject project={project} className="btn-style btn-project"/>
                 </span>
             )
         }
     };
-    displayNavBtn = ()=>{
-        return(
+    const displayNavBtn = () => {
+        return (
             <div className="project-NavBtn center">
-                {this.displayMoreInfo()}
-                {this.displayGithubURL()}
-                {this.displayWebURL()}
-                {this.displayEdit()}
+                {displayGithubURL()}
+                {displayWebURL()}
+                {displayEdit()}
             </div>
         )
     };
-    displayContent = ()=>{
-        const project = this.props;
-        return(
-            <p className="project-info">{project && project.content}</p>      
+    const displayContent = () => {
+        return (
+            <div className="project-info">
+                {project && project.content}
+                {displayLinks()}
+            </div>
         )
     };
-    render(){
-        const project = this.props;
-        return(
-            <Section className="row no-margin">
-                < button className="modal-close btn-floating fixed-in-right close"><i className="material-icons">close</i></button>
-                {/*<div className="col s1 m1 l1 no-padding">*/}
-                    {this.displayNavBtn()}
-                {/*</div>*/}
-                <div className="project-wrapper">
-                    <div className="col s12 m12 l5">
-                        <div className='row'>
-                            {this.displayTitle()}
-                            {this.displayDate()}
-                        </div>
-                        <div className='row'>
-                            {this.displayImg()}
-                            <div>
-                                {this.displayListOfIcons(project.languages && project.languages.concat(project.libraries), true)}
-                            </div>
+    const displayLinks = () => {
+        const links = project.links;
+        if (links)
+            return (
+                links.map(link => {
+                    return (
+                        <Fragment>
+                            <a target="_blank" rel="noopener noreferrer" href={link.URL} className="link">
+                                {link.name}
+                            </a>
+                            <br/>
+                        </Fragment>
+                    )
+                })
+            )
+    };
+
+    return (
+        <Section className="row no-margin">
+            < button className="modal-close btn-floating fixed-in-right close"><i className="material-icons">close</i>
+            </button>
+            {/*<div className="col s1 m1 l1 no-padding">*/}
+            {displayNavBtn()}
+            {/*</div>*/}
+            <div className="project-wrapper">
+                <div className='row'>
+                        {displayTitle()}
+                </div>
+                <div className='row'>
+                    <div className="col s12 m12 l5 no-padding">
+                        {displayImg()}
+                        <div>
+                            {displayListOfIcons(project.languages && project.languages.concat(project.libraries), true)}
                         </div>
                     </div>
                     <div className="col s12 m12 l7 no-padding">
-                            {this.displayContent()}
+                        {displayContent()}
+                    </div>
+                    <div className="col s12 no-padding">
+                        {displayDate()}
                     </div>
                 </div>
-            </Section>
-        )
-  
-    }
-    
-  }
-  const mapStateToProps =(state)=>{
-    return{
+            </div>
+        </Section>
+    )
+}
+
+const mapStateToProps = (state) => {
+    return {
         state: state,
         ...state.project.projectToDisplay
     }
-  };
-  export default connect(mapStateToProps)(Project);
+};
+export default connect(mapStateToProps)(Project);

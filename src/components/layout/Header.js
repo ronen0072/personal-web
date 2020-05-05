@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import M from "materialize-css";
-//import "materialize-css/dist/css/materialize.min.css";
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component{
@@ -8,12 +7,12 @@ class Header extends Component{
         const { changeSelection } = this.props;
         return(
             <div>
-                <li><a className='nav-link' onClick={() => changeSelection(0)}>Home</a></li>
-                <li><a className='nav-link' onClick={() => changeSelection(1)}>Projects</a></li>
-                <li><a className='nav-link' onClick={() => changeSelection(2)} >About Me</a></li>
-                <li><a className='nav-link' onClick={() => changeSelection(3)}>Contact</a></li>
-                <li><a className='nav-link' href='https://github.com/ronen0072'><i className="fab fa-github project-skills-icon"/></a></li>
-                <li><a className='nav-link' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin project-skills-icon"/></a></li>
+                <li><div className='nav-link' onClick={() => changeSelection(0)}>Home</div></li>
+                <li><div className='nav-link' onClick={() => changeSelection(1)}>Projects</div></li>
+                <li><div className='nav-link' onClick={() => changeSelection(2)} >About Me</div></li>
+                <li><div className='nav-link' onClick={() => changeSelection(3)}>Contact</div></li>
+                <li><a target="_blank" rel="noopener noreferrer" className='nav-link' href='https://github.com/ronen0072'><i className="fab fa-github project-skills-icon"/></a></li>
+                <li><a target="_blank" rel="noopener noreferrer" className='nav-link' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin project-skills-icon"/></a></li>
             </div>
         );
     };
@@ -21,12 +20,12 @@ class Header extends Component{
         const { changeSelection } = this.props;
         return(
             <div>
-                <li><a className='nav-link' onClick={() => changeSelection(0)}>Home</a></li>
-                <li><a className='nav-link' onClick={() => changeSelection(1)}>Projects</a></li>
-                <li><a className='nav-link' onClick={() => changeSelection(2)} >About Me</a></li>
-                <li><a className='nav-link' onClick={() => changeSelection(3)}>Contact</a></li>
-                <li><a className='nav-link' href='https://github.com/ronen0072'><i className="fab fa-github project-skills-icon"/> My GitHub</a></li>
-                <li><a className='nav-link' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin project-skills-icon"/>My Linkedin</a></li>
+                <li><div className='nav-link' onClick={() => changeSelection(0)}>Home</div></li>
+                <li><div className='nav-link' onClick={() => changeSelection(1)}>Projects</div></li>
+                <li><div className='nav-link' onClick={() => changeSelection(2)} >About Me</div></li>
+                <li><div className='nav-link' onClick={() => changeSelection(3)}>Contact</div></li>
+                <li><a target="_blank" rel="noopener noreferrer" className='nav-link' href='https://github.com/ronen0072'><i className="fab fa-github project-skills-icon"/> My GitHub</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" className='nav-link' href='http://linkedin.com/in/ronenfinish'><i className="fab fa-linkedin project-skills-icon"/>My Linkedin</a></li>
             </div>
         );
     };

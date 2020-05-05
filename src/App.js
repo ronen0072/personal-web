@@ -52,11 +52,11 @@ class App extends Component{
     return (
         <BrowserRouter>
           <div className="App">
-            <div ref={this.header}>
+            <div className={'header'} ref={this.header}>
               <Header changeSelection={this.changeSelection}/>
               <Home changeSelection={this.changeSelection}/>
             </div>
-            <div ref={this.projects}>
+            <div className={'projects'} ref={this.projects}>
               <Projects changeSelection={this.changeSelection}/>
             </div>
             <div ref={this.about}>

@@ -21,7 +21,7 @@ class SingedInLinks extends Component{
         // console.log(this.props);
         return(
             !this.props.isLogin?
-            <button onClick={this.handlClick} className="link grey-text text-lighten-4 margin" >Admin Login</button>
+            <button onClick={this.handlClick} className="link grey-text text-lighten-4 margin-right" >Admin Login</button>
             :null
         )
 

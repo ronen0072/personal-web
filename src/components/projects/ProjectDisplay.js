@@ -1,38 +1,33 @@
-import React, {useState, useEffect, Fragment}from 'react';
-import { connect } from 'react-redux';
-import Section from '../layout/Section';
-import moment from 'moment'; 
+import React, {useState, useEffect, Fragment} from 'react';
+import {connect} from 'react-redux';
 import {Icons, isIcons} from '../utils/Icons';
 import EditProject from './EditProject';
-import Swiper from "react-id-swiper";
 
-function ProjectDisplay(props){
-    const  publicURL ="https://ronen-finish-personal-web.firebaseapp.com/img/";
-    const [h,setH] = useState('500px');
-    const [infoClassName,setInfoClassName] = useState('favorite-Project-info-initiali');
-    const [imgClassName,setImgClassName] = useState('favoriteProject-img-initiali');
+function ProjectDisplay(project) {
+    const publicURL = "https://ronen-finish-personal-web.firebaseapp.com/img/";
+    const [isHover, setIsHover] = useState(false);
+    const [infoClassName, setInfoClassName] = useState('favorite-Project-info-initiali');
+    const [imgClassName, setImgClassName] = useState('favoriteProject-img-initiali');
 
     useEffect(() => {
-        if(props.displayContent){
-
+        if (!project.displayContent) {
+            onblur();
         }
 
-
-    }, [props.displayContent]);
-    const handleClick = (e)=>{
-        const project = props;
-        props.projectToDisplay(project);
+    }, [project.displayContent]);
+    const handleClick = () => {
+        project.projectToDisplay(project);
     };
-    const     displayListOfIcons = (list, displayAnyway) =>{
-        return(
+    const displayListOfIcons = (list, displayAnyway) => {
+        return (
             <Fragment>
-                {list && list.map((item,index)=>{
-                    if(displayAnyway||isIcons(item)){
-                        return(
-                            <Icons key={index} name={item} iconClassName="project-skills-icon" iconClassNaneTitle="project-skills-title"/>
+                {list && list.map((item, index) => {
+                    if (displayAnyway || isIcons(item)) {
+                        return (
+                            <Icons key={index} name={item} iconClassName="project-skills-icon"
+                                   iconClassNaneTitle="project-skills-title"/>
                         )
-                    }
-                    else {
+                    } else {
                         return null;
                     }
                 })}
@@ -40,73 +35,77 @@ function ProjectDisplay(props){
 
         )
     };
-    const displayTitle = ()=>{
-        const project = props;
-        return(
+    const displayTitle = () => {
+        return (
             <div>
                 <h3 className='project-title display-inline'>{project && project.title}</h3>
-                <h5 className='project-sub-title grey-text display-inline'>{project && project.sub_title}</h5>    
-            </div>        
-        )
-    };
-    const displayImg = ()=>{
-        const project = props;
-        return(
-            <div style={{
-                backgroundImage: "url("+publicURL+(project && project.imgFileName)+".jpg )",
-            }} className={"favoriteProject-img " + imgClassName}>
-                {props.displayContent && <EditProject project={project}/>}
+                <br/>
+                <h5 className='project-sub-title grey-text display-inline'>{project && project.sub_title}</h5>
             </div>
         )
     };
+    const displayImg = () => {
+        return (
+            <Fragment>
+                <div style={{
+                    backgroundImage: "url(" + publicURL + (project && project.imgFileName) + ".jpg )",
+                }} className={"favoriteProject-img " + imgClassName}>
+                    {project.displayContent && <EditProject project={project}/>}
+                </div>
+                <div className={'favoriteProject-img-effect'}>
 
-    const displayMoreInfo = ()=>{
-        let project = props;
+                </div>
+            </Fragment>
+        )
+    };
+
+    const displayMoreInfo = () => {
         let width = " col s12";
-        if(project && (project.githubURL && project.githubURL !== '')){
+        if (project && (project.githubURL && project.githubURL !== '')) {
             width = " col s6";
         }
-        if(project && project.webURL && project.webURL !== '') {
+        if (project && project.webURL && project.webURL !== '') {
             width = " col s4";
         }
-        return(
-            <div className={"no-padding" + width} >
+        return (
+            <div className={"no-padding" + width}>
                 <a onClick={handleClick} href="#project" className="btn-style modal-trigger">more info</a>
             </div>
         )
     };
-    const displayWebURL = ()=>{
-        let project = props;
+    const displayWebURL = () => {
         let width = " col s6 btn-style-right";
-        if(project && (project.githubURL && project.githubURL !== '')){
+        if (project && (project.githubURL && project.githubURL !== '')) {
             width = " col s4";
         }
-        if(project &&  (project.webURL && project.webURL !== '')){
-            return(
+        if (project && (project.webURL && project.webURL !== '')) {
+            return (
                 <div className={"no-padding" + width}>
                     <a
+                        target="_blank"
+                        rel="noopener noreferrer"
                         href={project.webURL}
-                       className="btn-style modal-trigger">Open</a>
+                        className="btn-style modal-trigger">Open</a>
                 </div>
             )
         }
     };
-    const displayGithubURL = ()=>{
-        let project = props;
+    const displayGithubURL = () => {
         let width = " col s6 btn-style-right";
-        if(project && project.webURL && project.webURL !== '') {
+        if (project && project.webURL && project.webURL !== '') {
             width = " col s4 btn-style-center";
         }
-        if(project && (project.githubURL && project.githubURL !== '')){
-            return(
-                <div className={"no-padding"+width}>
-                    <a href={project.githubURL} className="btn-style modal-trigger"><i className="fab fa-github padding-little"/></a>
+        if (project && (project.githubURL && project.githubURL !== '')) {
+            return (
+                <div className={"no-padding" + width}>
+                    <a target="_blank" rel="noopener noreferrer" href={project.githubURL} className="btn-style modal-trigger"><i
+                        className="fab fa-github padding-little"/></a>
                 </div>
             )
         }
     };
-    const displayNavBtn = ()=>{
-        return(
+    const displayNavBtn = () => {
+        return (
             <div className="favorites-project-NavBtn center row">
                 {displayMoreInfo()}
                 {displayGithubURL()}
@@ -114,66 +113,59 @@ function ProjectDisplay(props){
             </div>
         )
     };
-    const displayDate = ()=>{
-        let project = props;
-        if(project && project.date ){
-            return(
-                <div id="project-date" className="grey-text">{moment(project && project.date.toDate()).calendar()}</div>
-            )
-        }
-    };
-    const displayContent = ()=>{
-        const project = props;
-        return(
+
+    const displayContent = () => {
+        return (
             <div className="favorite-Project-info-wrapper">
-                <p id={"info-"+project.id} className={'favorite-Project-info ' + infoClassName}>{project && project.content}</p>
+                <p id={"info-" + project.id}
+                   className={'favorite-Project-info ' + infoClassName}>{project && project.content}</p>
             </div>
-
-
         )
     };
-    // return(
-    //     <div onMouseOver={()=>{setH('300px')}} onMouseOut={()=>{setH('500px')}}>
-    //         <img src={publicURL+props.imgName} style={{height: h}}/>
-    //         <div style={{height: '100px'}}>
-    //         </div>
-    //     </div>
-    // );
 
-    const onHover = ()=>{
-        if(props.displayContent){
+    const onHover = () => {
+        if (project.displayContent) {
             setInfoClassName('favorite-Project-info-in');
             setImgClassName('favoriteProject-img-in');
+            setIsHover(true);
         }
+
     };
 
-    const onblur= ()=>{
-        setInfoClassName('favorite-Project-info-out');
-        setImgClassName('favoriteProject-img-out');
+    const onblur = () => {
+        if (isHover) {
+            setInfoClassName('favorite-Project-info-out');
+            setImgClassName('favoriteProject-img-out');
+        }
+        setIsHover(false);
     };
-    if(props.id)
-    return(
-       <div className={props.className+" void-padding favoriteProject "} onTouchStart={onHover} onMouseOver={onHover} onTouchEnd={onblur} onMouseLeave={onblur}>
-           {displayImg()}
-           <div className="halfway">
-               {displayListOfIcons(props.languages.concat(props.libraries), false)}
-           </div>
-           <div className="content-padding white">
-               <div className="favoriteTitle">
-                   {displayTitle()}
-               </div>
-               {displayContent()}
-           </div>
-           {displayNavBtn()}
+    if (project.id)
+        return (
+            <div className={'favorite-project-background'}>
+                <div className={project.className + " void-padding favoriteProject "}  onTouchStart={onHover}
+                     onMouseOver={onHover} onMouseLeave={onblur}>
+                    {displayImg()}
+                    <div className="halfway">
+                        {displayListOfIcons(project.languages.concat(project.libraries), false)}
+                    </div>
+                    <div className="content-padding white">
+                        <div className="favoriteTitle">
+                            {displayTitle()}
+                        </div>
+                        {displayContent()}
+                    </div>
+                    {displayNavBtn()}
 
-       </div>
-    )
+                </div>
+            </div>
+        );
     else return null
 
 }
+
 const mapDispatchToProps = dispatch => {
     return {
-        projectToDisplay: (project) =>  dispatch({ type: 'PROJECT_TO_DISPLAY', project }),
+        projectToDisplay: (project) => dispatch({type: 'PROJECT_TO_DISPLAY', project}),
     }
-  };
+};
 export default connect(null, mapDispatchToProps)(ProjectDisplay);

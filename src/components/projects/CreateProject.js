@@ -45,7 +45,7 @@ class CreateProject extends Component {
        null
        :
       <div>
-        <a href="#create-project" className="btn-floating pink modal-trigger"><i className="material-icons">add</i></a>
+        <a href="#create-project" className="btn-floating pink modal-trigger add-project"><i className="material-icons">add</i></a>
         <Modal trigger='create-project'>
           <div className="padding">
             <form className="" onSubmit={this.handleSubmit}>
