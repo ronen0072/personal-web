@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import ProjectList from '../projects/ProjectList'
 import CreateProject from '../projects/CreateProject'
 
@@ -15,12 +15,12 @@ class Projects extends Component{
     };
     render() {
         return(
-            <div className="my-container">
+            <Fragment>
                 {/*<h4 className="title">Projects</h4>*/}
                 <CreateProject/>
                 <ProjectList favorites={this.state.toDisplaFfavorites} />
 
-            </div>
+            </Fragment>
         );
     }
 

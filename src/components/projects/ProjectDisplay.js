@@ -38,9 +38,9 @@ function ProjectDisplay(project) {
     const displayTitle = () => {
         return (
             <div>
-                <h3 className='project-title display-inline'>{project && project.title}</h3>
+                <h2 className='project-title display-inline'>{project && project.title}</h2>
                 <br/>
-                <h5 className='project-sub-title grey-text display-inline'>{project && project.sub_title}</h5>
+                <h4 className='project-sub-title grey-text display-inline'>{project && project.sub_title}</h4>
             </div>
         )
     };

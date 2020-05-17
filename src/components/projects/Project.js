@@ -105,16 +105,18 @@ function Project(project) {
         const links = project.links;
         if (links)
             return (
-                links.map(link => {
+                <ul>
+                {links.map(link => {
                     return (
-                        <Fragment>
+                        <li>
                             <a target="_blank" rel="noopener noreferrer" href={link.URL} className="link">
                                 {link.name}
                             </a>
                             <br/>
-                        </Fragment>
+                        </li>
                     )
-                })
+                })}
+                </ul>
             )
     };
 

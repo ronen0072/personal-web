@@ -43,8 +43,8 @@ class Contact extends Component{
             <div className="my-container page">
                 <Section className="section-padding">
                     <form onSubmit={(this.handleSubmit ) }>
-                        <h4 className="title">Contact</h4>
-                        <div className="row">
+                        <h2 className="title">Contact</h2>
+                        <div className="row contact-input ">
                             <div className="input-field col s12 m5">
                                 <i className="material-icons prefix">account_circle</i>
                                 <input type="text" id='name' onChange={this.handleChange} onBlur={this.validation}/>
@@ -64,8 +64,8 @@ class Contact extends Component{
                             </div>
                         </div>
                         <div className="row">
-                            <div className="input-field col ">
-                                <button className="btn pink lighten-1"><i className="fas fa-paper-plane"/> send</button>
+                            <div className="input-field col s12 center-align">
+                                <button className="btn gold-btn"><i className="fas fa-paper-plane"/> send</button>
                             </div>
                         </div>
                     </form>

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ProjectDisplay from "./ProjectDisplay";
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
+import EditProject from "./EditProject";
 
 const ProjectsSwiper = (props) => {
     const [slideIndex,setSlideIndex] = useState(2);
@@ -14,12 +15,12 @@ const ProjectsSwiper = (props) => {
         centeredSlides: true,
         slidesPerView: 3,
         setWrapperSize: true,
-        speed: 400,
+        speed: 600,
         initialSlide: slideIndex,
         coverflowEffect: {
-            rotate: 14.83, // Slide rotate in degrees
-            stretch: 0, // Stretch space between slides (in px)
-            depth: 260, // Depth offset in px (slides translate in Z axis)
+            rotate: 20, // Slide rotate in degrees
+            stretch: 30, // Stretch space between slides (in px)
+            depth: 480, // Depth offset in px (slides translate in Z axis)
             modifier: 2, // Effect multipler
             slideShadows: true // Enables slides shadows
         },
@@ -28,18 +29,23 @@ const ProjectsSwiper = (props) => {
                 const activeIndex = document.getElementsByClassName('swiper-container')[0].swiper.activeIndex;
                 setSlideIndex( activeIndex);
             },
+            // click : function () {
+            //     console.log('click')
+            // }
         }
     };
     if(props.projects)
     return (
         <div className={'Swiper'}>
+            {/*<div className={'row'} ><EditProject project={props.projects[slideIndex]}/></div>*/}
+
             <Swiper {...params}>
                 {props.projects && props.projects.map( (project, index)=>{
                     if(Math.abs(index - slideIndex)===4)
                         console.log(Math.abs(index - slideIndex));
                     return(
                         <div
-                            className={(Math.abs(index - slideIndex)===4? ' slide-fade-out' : '')}
+                            className={(Math.abs(index - slideIndex)>2? ' slide-fade-out' : '')}
                              style={{width: '700px'}}
                             key={project.id} >
                             <ProjectDisplay

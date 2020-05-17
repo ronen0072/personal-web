@@ -6,8 +6,8 @@
     --bright-gold: rgb(225, 176, 47);
     --gold: rgb(173, 137, 35);
     --background-color: rgb(224, 224, 224);
-    --navfoot: rgba(9, 9, 9, 0.87);
-    --home-background: linear-gradient(rgba(9, 9, 9, 0.65), rgba(9, 9, 9, 0.5), rgba(255, 255, 0, 0));
+    --navfoot: rgba(0, 0, 0, 0.8);
+    --home-background: linear-gradient(rgba(9, 9, 9, 0.8) 0%, rgba(9, 9, 9, 0.6) 50% , rgba(255, 255, 0, 0) 100%);
     --sectionClor: rgb(255, 255, 255);
     --homeColor: rgb(36, 36, 36);
     /*rgb(49, 132, 143);*/
@@ -92,11 +92,10 @@ body {
     bottom: -1.1em;
     left: 0.8em;
     padding: 4px;
-    color: #222;
     white-space: nowrap;
-    -moz-box-shadow: 0px 0px 4px #222;
-    -webkit-box-shadow: 0px 0px 4px #222;
-    box-shadow: 0px 0px 4px #222;
+    -moz-box-shadow: 0 0 4px #222;
+    -webkit-box-shadow: 0 0 4px #222;
+    box-shadow: 0 0 4px #222;
     background-color: #282c34;
     color: white;
     opacity: 0;
@@ -202,7 +201,7 @@ body::after {
     font-size: var(--font-size);
     color: var(--gold);
     background-color: rgba(255, 255, 255, 0);
-    border: 0px;
+    border: 0;
 }
 
 .link:focus {
@@ -373,9 +372,10 @@ nav {
 }
 
 .nav-link {
-    padding-top: calc(20px + 1.7vw);
+    padding: calc(20px + 1.7vw) 15px 0 15px;
     font-size: 1.5vw;
     height: 100%;
+    cursor: pointer;
 }
 
 .nav-wrapper {
@@ -471,15 +471,6 @@ nav {
 .footer {
     position: relative;;
     bottom: 0;
-    width: 100%;
-}
-
-.Favorites-projects-list {
-    display: block;
-    width: 100%;
-}
-
-.project-col {
     width: 100%;
 }
 
@@ -598,13 +589,6 @@ nav {
     background-size: cover;
 }
 
-.favorite-margin {
-    margin-left: 15%;
-    margin-right: 15%
-    /*margin-left: 2.5%;*/
-    /*margin-right: 2.5%;*/
-}
-
 @keyframes favorite-Project-in-animation {
     from {
         height: calc(var(--favorite-Project-dynamic-space) * var(--favorite-Project-info-Size-out));
@@ -628,7 +612,6 @@ nav {
 }
 
 .project-info {
-    display: block;
     display: -webkit-box;
     max-width: 100%;
     -webkit-box-orient: vertical;
@@ -671,10 +654,6 @@ nav {
     margin: 0;
 }
 
-.summary-info-project {
-    -webkit-line-clamp: 5;
-}
-
 .favorites-project-NavBtn {
     color: var(--gold);
     width: 100%;
@@ -703,14 +682,13 @@ nav {
     color: var(--gold);
     width: 100%;
     font-weight: bold;
-    /*margin: 0px 1vw 0px 0px;*/
+    /*margin: 0 1vw 0 0;*/
     letter-spacing: 0.5px;
     line-height: 36px;
     text-transform: uppercase;
     padding-right: 0.5vw;
     padding-left: 0.5vw;
     margin-top: var(--favorite-Project-btn-top-margin);
-
 }
 
 .btn-style:hover {
@@ -749,7 +727,6 @@ nav {
     /*margin-top: -50px;*/
     padding-left: 8px;
     width: 44px;;
-
 }
 
 .carousel {
@@ -769,7 +746,6 @@ nav {
 .carousel-item {
     min-height: 0 !important;
     background-position: center !important;
-    background-size: 100% 100% !important;
     background-size: cover !important;
 }
 .swiper{
@@ -800,7 +776,7 @@ nav {
 }
 .swiper-slide{
     position: relative;
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.21);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.21);
     /*bottom: 2rem;*/
     margin-bottom: 3rem;
     border-radius: 10px;
@@ -809,7 +785,7 @@ nav {
 
 .swiper-slide-active{
     position: relative;
-    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     bottom: 0;
 }
 
@@ -863,7 +839,7 @@ nav {
 }
 
 .slide-fade-out{
-    opacity: 0%;
+    opacity: 0;
     animation-name: slide-fade-out-animation;
     animation-timing-function: ease-in;
     animation-duration: 0.3s;
@@ -873,30 +849,11 @@ nav {
         opacity: 100%;
     }
     to {
-        opacity: 0%;
+        opacity: 0;
     }
 }
 
-@media only screen and (max-width: 1271px) {
-    .project-col {
-        width: 100%;
-        display: block;
-    }
 
-    .favorite-margin {
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-    .project-summary-img {
-        height: 32vh;
-        background-size: cover;
-    }
-
-    .summary-info {
-        -webkit-line-clamp: 4;
-    }
-}
 
 .fail {
     background-color: red;
@@ -904,6 +861,10 @@ nav {
 
 .success {
     background-color: green;
+}
+
+@media only screen and (max-width: 1271px) {
+
 }
 
 /*Horizontal pads and laptops*/
