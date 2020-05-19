@@ -37,7 +37,7 @@ function ProjectDisplay(project) {
     };
     const displayTitle = () => {
         return (
-            <div>
+            <div className={'favoriteTitle'}>
                 <h2 className='project-title display-inline'>{project && project.title}</h2>
                 <br/>
                 <h4 className='project-sub-title grey-text display-inline'>{project && project.sub_title}</h4>
@@ -50,7 +50,7 @@ function ProjectDisplay(project) {
                 <div style={{
                     backgroundImage: "url(" + publicURL + (project && project.imgFileName) + ".jpg )",
                 }} className={"favoriteProject-img " + imgClassName}>
-                    {project.displayContent && <EditProject project={project}/>}
+                    {(project.editable && project.displayContent) && <EditProject project={project}/>}
                 </div>
                 <div className={'favoriteProject-img-effect'}>
 

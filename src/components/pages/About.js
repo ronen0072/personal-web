@@ -7,76 +7,82 @@ const About = (props) => {
     const {changeSelection} = props;
     return (
         <Fragment>
-            <div className="my-container page about">
-                <Section className="section-padding">
-                    <h2 className="title">About Me</h2>
-                    <div className="row no-margin">
-                        <div className="col s12 m12 l6 xl7 about-info">
+            <div className='my-container page about'>
+                <Section className='section-padding'>
+                    <h2 className='title' data-aos="fade-right">About Me</h2>
+                    <div className='row no-margin'>
+                        <div className='col s12 m12 l6 xl7 about-info' data-aos="zoom-in" data-aos-offset="150">
                             <p>
                                 I am a software developer and a Computer Science B.Sc graduate, Ben-Gurion University.
                                 These days I am looking for a job as a Developer, preferably a Full Stack position.
                                 I am a technology fan, I really enjoy learning new things and facing new challenges.
                             </p>
-                            <p className="no-margin-top-bottom">
-                                Experience working with Linux systems <i className="fab fa-linux skils-icon"/> and
-                                git <i className="fab fa-github skils-icon"/>.
+                            <p>
+                                Experience working with Linux systems <i className='fab fa-linux skils-icon'/> and
+                                git <i className='fab fa-github skils-icon'/>.
                                 <br/>
-                                <h6 className="home-color sub-title display-inline">IDE:</h6>Visual Studio, Eclipse,
+                                <h6 className='home-color sub-title display-inline'>IDE:</h6>Visual Studio, Eclipse,
                                 Atom, Anaconda, Intellij, CLion.<br/>
-                                You can view works on my <button className="link"
+                                You can view works on my <button className='link'
                                                                  onClick={() => changeSelection(1)}>projects</button> or
-                                my <a className="link" href='https://github.com/ronen0072'>github <i
-                                className="fab fa-github link"/></a>.
+                                my <a className='link' href='https://github.com/ronen0072'>github <i
+                                className='fab fa-github link'/></a>.
                             </p>
                         </div>
-                        <div className="col s12 m12 l6 xl5">
-                            <div className="row no-margin about-skills">
+                        <div className='col s12 m12 l6 xl5'>
+                            <div className='row no-margin about-skills' data-aos="fade-up"
+                                 data-aos-anchor-placement="center-bottom" data-aos-offset="150">
                                 <p>
-                                    <h4 className="no-margin-top-bottom home-color sub-title">skills:</h4>
-                                    <div className="col s12 m6 ">
-                                        <h5 className="home-color sub-title">Languages: </h5>
+                                    <h3 className='no-margin-top-bottom home-color sub-title skills-title'>skills:</h3>
+                                    <div className='col s12 m6'>
+                                        <h5 className='home-color sub-title '>Languages: </h5>
                                         <ul>
-                                            <li><Icons name="Java" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="JavaScript" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="NodeJS" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="HTML5" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="CSS" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="MongoDB" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="Python" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="C" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="C++" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
+                                            <li><Icons name='Java' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='JavaScript' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='NodeJS' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='HTML5' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='CSS' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='MongoDB' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='Python' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='C' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='C++' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
                                         </ul>
                                     </div>
-                                    <div className="col s12 m6">
-                                        <h5 className="home-color sub-title">Libraries and Frameworks: </h5>
+                                    <div className='col s12 m6'>
+                                        <div  className={'skills-libraries'}>
+                                        <h5 className='home-color sub-title skills-libraries-title'>
+                                            Libraries & Frameworks:
+                                        </h5>
                                         <ul>
-                                            <li><Icons name="React" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="Redux" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="jQuery" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="Material Ui" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="Materialize" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="express" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="openGL" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
-                                            <li><Icons name="Keras" iconClassName="skills-icon"
-                                                       iconClassNaneTitle="skills-title"/></li>
+                                            <li><Icons name="React" iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='Redux' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='jQuery' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='Keras' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name='Material Ui' iconClassName='skills-icon'
+                                                       iconClassNaneTitle="skill-title"/></li>
+                                            <li><Icons name='Materialize' iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name="express" iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+                                            <li><Icons name="openGL" iconClassName='skills-icon'
+                                                       iconClassNaneTitle='skill-title'/></li>
+
 
                                         </ul>
+                                    </div>
                                     </div>
                                 </p>
                             </div>
@@ -85,17 +91,10 @@ const About = (props) => {
                     </div>
                 </Section>
             </div>
-            <div className="my-container page more-about">
-                <Section className="no-padding">
-                    <div className="row">
-                        <div className={'col hobbies-title'}>
-                            <h4 className="title">More About Me</h4>
-                        </div>
-                        <Carousel/>
-
-                    </div>
-                </Section>
+            <div className={'hobbies-title'}>
+                <h2 className='title'>More About Me</h2>
             </div>
+            <Carousel/>
         </Fragment>
     )
 };

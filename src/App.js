@@ -8,6 +8,8 @@ import About from './components/pages/About';
 import Contact from './components/pages/Contact';
 import Projects from './components/pages/Projects';
 import Project from './components/projects/Project'
+import AOS from "aos";
+import 'aos/dist/aos.css';
 
 
 class App extends Component{
@@ -49,20 +51,24 @@ class App extends Component{
     }
   };
   render(){
+    AOS.init({
+      once: true,
+    });
     return (
         <BrowserRouter>
           <div className="App">
             <div className={'header'} ref={this.header}>
+              <div className={'background-header'}></div>
               <Header changeSelection={this.changeSelection}/>
               <Home changeSelection={this.changeSelection}/>
             </div>
             <div className={'projects'} ref={this.projects}>
               <Projects changeSelection={this.changeSelection}/>
             </div>
-            <div ref={this.about}>
+            <div className={'abc'} ref={this.about}>
               <About changeSelection={this.changeSelection}/>
             </div>
-            <div ref={this.contact}>
+            <div className={'abc'} ref={this.contact}>
               <Contact/>
             </div>
             <Modal trigger='project'>

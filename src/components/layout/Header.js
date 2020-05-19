@@ -19,7 +19,7 @@ class Header extends Component{
     navLinksToMobile = () =>{
         const { changeSelection } = this.props;
         return(
-            <div>
+            <div className={'mobile-menu'}>
                 <li><div className='nav-link' onClick={() => changeSelection(0)}>Home</div></li>
                 <li><div className='nav-link' onClick={() => changeSelection(1)}>Projects</div></li>
                 <li><div className='nav-link' onClick={() => changeSelection(2)} >About Me</div></li>

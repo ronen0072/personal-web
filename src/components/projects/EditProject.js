@@ -10,7 +10,10 @@ class EditProject extends CreateProject {
   handleOpen = () => {
     // console.log( "---------------------------------------------------------------------");
     // console.log("(this.props.languages !== this.state.languages):",(this.props.project.languages !== this.state.languages));
-    // console.log(this.props.project);
+    // console.log('project: ', this.props.project);
+    this.setState({
+      ...this.props.project
+    })
   };
   handleChange = (e) => {
     this.setState({

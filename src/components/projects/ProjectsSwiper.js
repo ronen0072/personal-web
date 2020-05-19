@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, Fragment} from 'react';
 import ProjectDisplay from "./ProjectDisplay";
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import EditProject from "./EditProject";
 
 const ProjectsSwiper = (props) => {
-    const [slideIndex,setSlideIndex] = useState(2);
+    const [slideIndex, setSlideIndex] = useState(2);
+    const [activeProject, setActiveProject] = useState(props.projects && props.projects[2]);
     const params = {
         pagination: {
             clickable: true
@@ -27,40 +28,42 @@ const ProjectsSwiper = (props) => {
         on: {
             slideChange: function () {
                 const activeIndex = document.getElementsByClassName('swiper-container')[0].swiper.activeIndex;
-                setSlideIndex( activeIndex);
+                setSlideIndex(activeIndex);
+                setActiveProject(props.projects[activeIndex])
             },
             // click : function () {
             //     console.log('click')
             // }
         }
     };
-    if(props.projects)
-    return (
-        <div className={'Swiper'}>
-            {/*<div className={'row'} ><EditProject project={props.projects[slideIndex]}/></div>*/}
-
-            <Swiper {...params}>
-                {props.projects && props.projects.map( (project, index)=>{
-                    if(Math.abs(index - slideIndex)===4)
-                        console.log(Math.abs(index - slideIndex));
-                    return(
-                        <div
-                            className={(Math.abs(index - slideIndex)>2? ' slide-fade-out' : '')}
-                             style={{width: '700px'}}
-                            key={project.id} >
-                            <ProjectDisplay
-                                className={index === slideIndex? "swiper-center-item" : 'swiper-item'}
-                                index={index}
-                                displayContent={index === slideIndex}
-                                {...project}
-                            />
-                        </div>
-                    )
-                })}
-            </Swiper>
-        </div>
-    );
-    else  return null;
+    if (props.projects)
+        return (
+            <Fragment>
+                <EditProject project={activeProject}/>
+                <div className={'projects-swiper'}>
+                    <Swiper {...params}>
+                        {props.projects && props.projects.map((project, index) => {
+                            if (Math.abs(index - slideIndex) === 4)
+                                console.log(Math.abs(index - slideIndex));
+                            return (
+                                <div
+                                    className={(Math.abs(index - slideIndex) > 2 ? ' slide-fade-out' : '')}
+                                    style={{width: '700px'}}
+                                    key={project.id}>
+                                    <ProjectDisplay
+                                        className={index === slideIndex ? "swiper-center-item" : 'swiper-item'}
+                                        index={index}
+                                        displayContent={index === slideIndex}
+                                        {...project}
+                                    />
+                                </div>
+                            )
+                        })}
+                    </Swiper>
+                </div>
+            </Fragment>
+        );
+    else return null;
 };
 
 export default ProjectsSwiper;
