@@ -597,29 +597,6 @@ nav {
     transform: scale(1.2);
 }
 
-@keyframes focus-zoom-in-animation {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.1);
-    }
-}
-.focus-zoom-in:onmouseout{
-    animation-name: out-of-focus-zoom-out-animation;
-    animation-timing-function: ease-in;
-    animation-duration: 1s;
-}
-
-@keyframes out-of-focus-zoom-out-animation {
-    from {
-        transform: scale(1.1);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
 .gold-btn{
     display: inline-block;
     height: var(--project-nav-link-height);
@@ -1167,8 +1144,9 @@ nav {
 
 }
 
-.carousel-dots li button:before :hover{
-    font-size: 60px !important;
+.carousel-dots button:hover{
+    transition: 0.3s;
+    transform: scale(1.3);
 }
 
 .projects-carousel .carousel-dots{
