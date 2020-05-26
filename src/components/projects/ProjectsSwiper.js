@@ -31,9 +31,12 @@ const ProjectsSwiper = (props) => {
                 setSlideIndex(activeIndex);
                 setActiveProject(props.projects[activeIndex])
             },
-            // click : function () {
-            //     console.log('click')
-            // }
+            click : function (touchend) {
+                if(touchend.path[3].className.includes('next'))
+                    this.slideNext();
+                if(touchend.path[3].className.includes('prev'))
+                    this.slidePrev()
+            }
         }
     };
     if (props.projects)

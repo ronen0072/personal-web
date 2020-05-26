@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import Section from '../layout/Section';
-import Carousel from '../layout/Carousel';
+import HobbiesCarousel from '../layout/HobbiesCarousel';
 import {Icons} from '../utils/Icons';
 
 const About = (props) => {
@@ -9,9 +9,9 @@ const About = (props) => {
         <Fragment>
             <div className='my-container page about'>
                 <Section className='section-padding'>
-                    <h2 className='title' data-aos="fade-right">About Me</h2>
+                    <h2 className='title' data-aos="fade-right" data-aos-duration="800">About Me</h2>
                     <div className='row no-margin'>
-                        <div className='col s12 m12 l6 xl7 about-info' data-aos="zoom-in" data-aos-offset="150">
+                        <div className='col s12 m12 l6 xl7 about-info' data-aos="zoom-in" data-aos-duration="800">
                             <p>
                                 I am a software developer and a Computer Science B.Sc graduate, Ben-Gurion University.
                                 These days I am looking for a job as a Developer, preferably a Full Stack position.
@@ -31,7 +31,7 @@ const About = (props) => {
                         </div>
                         <div className='col s12 m12 l6 xl5'>
                             <div className='row no-margin about-skills' data-aos="fade-up"
-                                 data-aos-anchor-placement="center-bottom" data-aos-offset="150">
+                                 data-aos-anchor-placement="center-bottom" data-aos-duration="800">
                                 <p>
                                     <h3 className='no-margin-top-bottom home-color sub-title skills-title'>skills:</h3>
                                     <div className='col s12 m6'>
@@ -73,7 +73,7 @@ const About = (props) => {
                                                        iconClassNaneTitle='skill-title'/></li>
                                             <li><Icons name='Material Ui' iconClassName='skills-icon'
                                                        iconClassNaneTitle="skill-title"/></li>
-                                            <li><Icons name='Materialize' iconClassName='skills-icon'
+                                            <li><Icons stroke="black" name='Materialize' iconClassName='skills-icon'
                                                        iconClassNaneTitle='skill-title'/></li>
                                             <li><Icons name="express" iconClassName='skills-icon'
                                                        iconClassNaneTitle='skill-title'/></li>
@@ -94,7 +94,7 @@ const About = (props) => {
             <div className={'hobbies-title'}>
                 <h2 className='title'>More About Me</h2>
             </div>
-            <Carousel/>
+            <HobbiesCarousel/>
         </Fragment>
     )
 };

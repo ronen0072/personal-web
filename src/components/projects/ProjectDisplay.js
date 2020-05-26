@@ -2,9 +2,9 @@ import React, {useState, useEffect, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {Icons, isIcons} from '../utils/Icons';
 import EditProject from './EditProject';
+import publicURL from '../../publicURL'
 
 function ProjectDisplay(project) {
-    const publicURL = "https://ronen-finish-personal-web.firebaseapp.com/img/";
     const [isHover, setIsHover] = useState(false);
     const [infoClassName, setInfoClassName] = useState('favorite-Project-info-initiali');
     const [imgClassName, setImgClassName] = useState('favoriteProject-img-initiali');
@@ -48,7 +48,7 @@ function ProjectDisplay(project) {
         return (
             <Fragment>
                 <div style={{
-                    backgroundImage: "url(" + publicURL + (project && project.imgFileName) + ".jpg )",
+                    backgroundImage: "url(" + publicURL()+ (project && project.imgFileName) + ".jpg )",
                 }} className={"favoriteProject-img " + imgClassName}>
                     {(project.editable && project.displayContent) && <EditProject project={project}/>}
                 </div>
@@ -168,4 +168,7 @@ const mapDispatchToProps = dispatch => {
         projectToDisplay: (project) => dispatch({type: 'PROJECT_TO_DISPLAY', project}),
     }
 };
+
+
+
 export default connect(null, mapDispatchToProps)(ProjectDisplay);

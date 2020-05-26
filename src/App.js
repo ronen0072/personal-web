@@ -10,15 +10,20 @@ import Projects from './components/pages/Projects';
 import Project from './components/projects/Project'
 import AOS from "aos";
 import 'aos/dist/aos.css';
+import {connect} from "react-redux";
 
 
 class App extends Component{
+
   constructor(props) {
     super(props);
     this.state = {
+      ...this.state,
       selected: null
     };
   }
+
+
   //refs
   header = createRef();
   projects = createRef();
@@ -65,10 +70,10 @@ class App extends Component{
             <div className={'projects'} ref={this.projects}>
               <Projects changeSelection={this.changeSelection}/>
             </div>
-            <div className={'abc'} ref={this.about}>
+            <div ref={this.about}>
               <About changeSelection={this.changeSelection}/>
             </div>
-            <div className={'abc'} ref={this.contact}>
+            <div ref={this.contact}>
               <Contact/>
             </div>
             <Modal trigger='project'>
@@ -80,5 +85,6 @@ class App extends Component{
     );
   }
 }
+
 
 export default App;
