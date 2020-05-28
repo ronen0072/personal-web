@@ -37,7 +37,7 @@ function ProjectDisplay(project) {
     };
     const displayTitle = () => {
         return (
-            <div className={'favoriteTitle'}>
+            <div className={'favorite-title content-padding white'}>
                 <h2 className='project-title display-inline'>{project && project.title}</h2>
                 <br/>
                 <h4 className='project-sub-title grey-text display-inline'>{project && project.sub_title}</h4>
@@ -48,12 +48,11 @@ function ProjectDisplay(project) {
         return (
             <Fragment>
                 <div style={{
-                    backgroundImage: "url(" + publicURL()+ (project && project.imgFileName) + ".jpg )",
+                    backgroundImage: "url(" + publicURL() + (project && project.imgFileName) + ".jpg )",
                 }} className={"favoriteProject-img " + imgClassName}>
                     {(project.editable && project.displayContent) && <EditProject project={project}/>}
                 </div>
                 <div className={'favoriteProject-img-effect'}>
-
                 </div>
             </Fragment>
         )
@@ -98,7 +97,8 @@ function ProjectDisplay(project) {
         if (project && (project.githubURL && project.githubURL !== '')) {
             return (
                 <div className={"no-padding" + width}>
-                    <a target="_blank" rel="noopener noreferrer" href={project.githubURL} className="btn-style modal-trigger"><i
+                    <a target="_blank" rel="noopener noreferrer" href={project.githubURL}
+                       className="btn-style modal-trigger"><i
                         className="fab fa-github padding-little"/></a>
                 </div>
             )
@@ -116,7 +116,7 @@ function ProjectDisplay(project) {
 
     const displayContent = () => {
         return (
-            <div className="favorite-Project-info-wrapper">
+            <div className="favorite-Project-info-wrapper content-padding white">
                 <p id={"info-" + project.id}
                    className={'favorite-Project-info ' + infoClassName}>{project && project.content}</p>
             </div>
@@ -141,22 +141,16 @@ function ProjectDisplay(project) {
     };
     if (project.id)
         return (
-            <div className={'favorite-project-background'}>
-                <div className={project.className + " void-padding favoriteProject "}  onTouchStart={onHover}
-                     onMouseOver={onHover} onMouseLeave={onblur}>
-                    {displayImg()}
-                    <div className="halfway">
-                        {displayListOfIcons(project.languages.concat(project.libraries), false)}
-                    </div>
-                    <div className="content-padding white">
-                        <div className="favoriteTitle">
-                            {displayTitle()}
-                        </div>
-                        {displayContent()}
-                    </div>
-                    {displayNavBtn()}
-
+            <div className={project.className + " void-padding favoriteProject "} onTouchStart={onHover}
+                 onMouseOver={onHover} onMouseLeave={onblur}>
+                {displayImg()}
+                <div className="tech-icon white">
+                    {displayListOfIcons(project.languages.concat(project.libraries), false)}
                 </div>
+                {displayTitle()}
+                {displayContent()}
+                {displayNavBtn()}
+
             </div>
         );
     else return null
@@ -168,7 +162,6 @@ const mapDispatchToProps = dispatch => {
         projectToDisplay: (project) => dispatch({type: 'PROJECT_TO_DISPLAY', project}),
     }
 };
-
 
 
 export default connect(null, mapDispatchToProps)(ProjectDisplay);

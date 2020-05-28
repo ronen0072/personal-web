@@ -10,7 +10,7 @@ const HobbiesCarousel = (props) => {
     const settings = {
         initialSlide: 0,
         autoplaySpeed: 10000,
-        autoplay: true,
+        autoplay: autoplay,
         dots: true,
         duration: 300,
         overScan: 0,
@@ -23,7 +23,7 @@ const HobbiesCarousel = (props) => {
         },
         {
             imageFileName: 'bmx',
-            description: ['I riding BMX for 13 years and I am one of the founders of the: B7MX crew,\n',
+            description: ['I\'m riding BMX for 13 years, and one of the founders of the: B7MX crew,\n',
                 ' a group of local riders in the city of Beer Sheva.\n',
                 'We worked with the municipality toward building a bike park.\n',
                 'Every year we organize events to promote the field in Israel and I run our\n',
@@ -68,13 +68,13 @@ const HobbiesCarousel = (props) => {
     };
 
     return (
-        <div onClick={()=>toggleAnimation()} className={'hobbies-carousel'}>
+        <div onTouchEnd={()=>toggleAnimation()} className={'hobbies-carousel'}>
             <Slider {...settings}>
                 {imagesAndDescription.map((imageAndDescription, index) => {
                     let className = index % 2 === 0 ? 'right' : 'left';
                     return (
                         <div index={index}  className={'my-container page ' + imageAndDescription.imageFileName}
-                             onMouseOver={startAnimation}>
+                             onMouseOver={startAnimation} onTouchMove={startAnimation}>
                             <Section className='section-padding hobbies-section row'>
                                 {image(index % 2 === 1, index)}
                                 <div onTouchStart={()=>{setCarouselItemIndex(index); }} className={'col s12 m6 carousel-item-description ' + className + '-side'}>

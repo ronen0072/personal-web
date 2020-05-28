@@ -8,7 +8,7 @@
 :root {
     --font-size: 13pt;
     --logo-font-size: calc(20px + 3.4vw);
-    --nav-height: max(var(--logo-font-size), 10vh);
+    /*--nav-height: max(var(--logo-font-size), 10vh);*/
     --fontColorVal: 0, 0, 0;
     --fontColor: rgb(var(--fontColorVal));
     --font-section-color: rgb(36, 36, 36);
@@ -271,14 +271,13 @@ input {
     font-size: var(--font-size);
     color: var(--skills-icon);
     fill: var(--skills-icon);
-    stroke: white;
+    stroke: var(--skills-icon);;
     margin-right: 0.3vw;
     height: var(--font-size);
     width: var(--font-size);
 }
 
 .skill-title {
-    font-size: var(--font-size);
     color: var(--skills-icon);
     margin-left: 0.6rem;
 }
@@ -507,7 +506,6 @@ nav {
 
 .nav-wrapper {
     background: var(--navbar);
-    height: var(--nav-height);
 !important;
 }
 
@@ -661,6 +659,7 @@ nav {
     padding-left: 0  !important;
     padding-right: 0 !important;
 }
+
 @media only screen and (max-width: 412px) {
     .hobbies-section {
         margin-top: 10rem;
@@ -1137,6 +1136,12 @@ nav {
 .carousel-row {
 }
 
+.carousel-prev:before, .carousel-next:before {
+    width: 70px !important;
+    height: 70px !important;
+    opacity: 0.7 !important;
+}
+
 .carousel-next:before {
     background-image: url(/next.svg) !important;
 }
@@ -1387,7 +1392,7 @@ nav {
     }
 
     .active .hobbies-image-scale-down {
-        transform: scale(0.8);
+        width: calc(100% * 0.6);
         animation-name: hobbies-image-scale-down-animation;
         animation-timing-function: ease-in;
         animation-duration: 1s;
@@ -1395,15 +1400,17 @@ nav {
 
     @keyframes hobbies-image-scale-down-animation {
         from {
-            transform: scale(1);
+            width: 100%;
+            height: auto;
         }
         to {
-            transform: scale(0.8);
+            width: calc(100% * 0.6);
+            height: auto;
         }
     }
 
     .hobbies-image-scale-up {
-        transform: scale(1);
+        width: 100%;
         animation-name: hobbies-image-scale-up-animation;
         animation-timing-function: ease-in;
         animation-duration: 1s;
@@ -1411,10 +1418,12 @@ nav {
 
     @keyframes hobbies-image-scale-up-animation {
         from {
-            transform: scale(0.8);
+            width: calc(100% * 0.6);
+            height: auto;
         }
         to {
-            transform: scale(1);
+            width: 100%;
+            height: auto;
         }
     }
 
@@ -1423,28 +1432,37 @@ nav {
         transition: 1s;
     }
 
-    .active .hobbies-description:active {
-        -webkit-line-clamp: 9;
-        animation-name: hobbies-description-animation;
+    .active .hobbies-description-scale-up {
+        -webkit-line-clamp: 10;
+        animation-name: hobbies-description-scale-up-animation;
         animation-timing-function: ease-in;
         animation-duration: 1s;
     }
 
-    @keyframes hobbies-description-animation {
-        0% {
+
+    @keyframes hobbies-description-scale-up-animation {
+        from {
+
+            -webkit-line-clamp:5;
+        }
+        to{
+            -webkit-line-clamp: 10;
+            height: fit-content
+        }
+    }
+    .active .hobbies-description-scale-down {
+        -webkit-line-clamp: 4;
+        animation-name: hobbies-description-scale-down-animationanimation;
+        animation-timing-function: ease-in;
+        animation-duration: 1s;
+    }
+
+    @keyframes hobbies-description-scale-down-animation {
+        from {
+            -webkit-line-clamp: 10;
+        }
+        to{
             -webkit-line-clamp: 4;
-        }
-        25%{
-            -webkit-line-clamp: 5;
-        }
-        50%{
-            -webkit-line-clamp: 6;
-        }
-        75% {
-            -webkit-line-clamp: 7;
-        }
-        100% {
-            -webkit-line-clamp: 8;
         }
     }
 

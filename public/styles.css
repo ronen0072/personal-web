@@ -43,7 +43,7 @@
     --project-subtitle-font-size: calc(0.3vw + 1em);
     --project-subtitle-padding-bottom: calc(var(--project-subtitle-font-size) * 0.3);
     --project-subtitle-height: calc(var(--project-subtitle-font-size) + var(--project-subtitle-padding-bottom));
-    --project-title-height: calc(var(--project-title-padding-top) + var(--project-main-title-height) + var(--project-subtitle-height) + 14px);
+    --project-title-height: calc(var(--project-main-title-height) + var(--project-main-title-padding-bottom) + var(--project-subtitle-height) + var(--project-subtitle-padding-bottom));
     --project-skills-icon-font-size: 2rem;
     --favorite-Project-img-Size-out: 1;
     --favorite-Project-img-Size-in: 0.5;
@@ -386,13 +386,12 @@ nav {
     display: block;
 }
 
-.halfway {
+.tech-icon  {
     position: relative;
     padding: 0 var(--section-padding);
-    margin-top: calc(var(--project-Technologies-icons) * -0.5);
-    margin-bottom: calc(var(--project-Technologies-icons) * -0.5);
     height: var(--project-Technologies-icons);
     overflow: hidden;
+    background-color: white;
 }
 
 .padding {
@@ -891,7 +890,7 @@ nav {
     padding-bottom: var(--project-subtitle-padding-bottom);
 }
 
-.favoriteTitle {
+.favorite-title {
     padding-top: var(--project-title-padding-top);
     height: var(--project-title-height);
     overflow: hidden;
@@ -954,7 +953,7 @@ nav {
 
 .favoriteProject-img {
     vertical-align: top;
-    padding: var(--favoriteProject-img-padding);
+    /*padding: var(--favoriteProject-img-padding);*/
     background-size: cover;
     background-color: var(--homeColor);
     background-position: top;
@@ -968,6 +967,11 @@ nav {
     height: 100%;
     width: 100%;
     background-size: cover;
+    border-radius: 15px;
+    border-width: 5px ;
+    border-style: solid;
+    border-color: rgba(183, 183, 183, 0.35);
+
 }
 
 @keyframes favorite-Project-in-animation {
@@ -1001,6 +1005,7 @@ nav {
     text-align: justify;
     padding-left: var(--project-info-padding);
     margin-top: 0;
+
 }
 
 .favorite-Project-info-in {
@@ -1261,6 +1266,7 @@ nav {
     /*bottom: 2rem;*/
     margin-bottom: 3rem;
     border-radius: 10px;
+    height: var(--favorite-Project-Size) !important;
     /*background-color: var(--background-color);*/
 }
 
@@ -1508,7 +1514,7 @@ nav {
     }
 
     :root {
-        --project-info-padding: 0;
+        --project-info-padding: 2vw;
         /*--project-title-font-height: calc(var(--project-title-font-size) + var(--project-title-top-margin) + 8px);*/
         --my-container-margin: 5vw;
     }

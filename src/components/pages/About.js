@@ -2,11 +2,13 @@ import React, {Fragment} from 'react';
 import Section from '../layout/Section';
 import HobbiesCarousel from '../layout/HobbiesCarousel';
 import {Icons} from '../utils/Icons';
+import LazyLoad from "react-lazy-load";
 
 const About = (props) => {
     const {changeSelection} = props;
     return (
         <Fragment>
+            <LazyLoad offset={500}>
             <div className='my-container page about'>
                 <Section className='section-padding'>
                     <h2 className='title' data-aos="fade-right" data-aos-duration="800">About Me</h2>
@@ -91,6 +93,7 @@ const About = (props) => {
                     </div>
                 </Section>
             </div>
+            </LazyLoad>
             <div className={'hobbies-title'}>
                 <h2 className='title'>More About Me</h2>
             </div>
