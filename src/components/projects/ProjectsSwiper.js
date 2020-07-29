@@ -9,7 +9,8 @@ const ProjectsSwiper = (props) => {
     const [activeProject, setActiveProject] = useState(props.projects && props.projects[2]);
     const params = {
         pagination: {
-            clickable: true
+            clickable: true,
+            el: '.swiper-pagination',
         },
         spaceBetween: 0,
         effect: "coverflow",

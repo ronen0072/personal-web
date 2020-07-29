@@ -2,7 +2,6 @@
 
 
 export const createProject = (project) => {
-    
     return (dispatch, getState,{ getFirebace, getFirestore }) => {
       const firestore = getFirestore();
       const isAdmin = getState().firebase.profile.admin;
@@ -45,8 +44,7 @@ export const updateProject = (project) => {
               githubURL: project.githubURL ? project.githubURL : "",
               webURL: project.webURL ? project.webURL : ""
               }).then((updateProject)=>{
-                  console.log("updateProject");
-                  console.log(updateProject);
+                  console.log("updateProject:", updateProject);
                   dispatch({ type: 'UPDATE_PROJECT', project });
               }).catch((err)=>{
                   dispatch({ type: 'UPDATE_PROJECT_ERROR)', err })

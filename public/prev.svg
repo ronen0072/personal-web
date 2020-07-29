@@ -1,12 +1,5 @@
-<svg fill="rgb(225, 176, 47)" width="1000" height="3000" xmlns="http://www.w3.org/2000/svg" stroke="null" style="vector-effect: non-scaling-stroke;">
- <metadata stroke="null" style="vector-effect: non-scaling-stroke;">Svg Vector Icons : http://www.onlinewebfonts.com/icon</metadata>
-
- <g stroke="null">
-  <title stroke="null">Layer 1</title>
-  <g stroke="null" id="svg_1">
-   <g stroke="null" id="svg_2">
-    <path stroke="null" id="svg_3" d="m989.740296,363.258698l-598.956986,1141.479646l599.116665,1141.479646l-183.471495,349.258698l-782.42848,-1490.738344l782.42848,-1490.738344l183.311815,349.258698z"/>
-   </g>
-  </g>
- </g>
+<svg fill="rgba(255, 255, 255, 0.8)" width="1000" height="3000" xmlns="http://www.w3.org/2000/svg" stroke="null"
+     style="vector-effect: non-scaling-stroke;">
+    <path stroke="null" id="svg_3"
+          d="m989.740296,363.258698l-598.956986,1141.479646l599.116665,1141.479646l-183.471495,349.258698l-782.42848,-1490.738344l782.42848,-1490.738344l183.311815,349.258698z"/>
 </svg>

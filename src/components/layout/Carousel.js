@@ -58,6 +58,7 @@ class carousel extends Component {
     };
 
     startAnimation = ()=>{
+        console.log('startAnimation')
         if(!this.state.autoplay){
             this.setState({
                 ...this.state,

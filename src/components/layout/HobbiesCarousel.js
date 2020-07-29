@@ -7,10 +7,10 @@ const HobbiesCarousel = (props) => {
     const [autoplay, setAutoplay] = useState(false);
     const [open, setOpen] = useState(false);
     const [carouselItemIndex, setCarouselItemIndex] = useState(null);
-    const settings = {
+    let settings = {
         initialSlide: 0,
         autoplaySpeed: 10000,
-        autoplay: autoplay,
+        autoplay: true,
         dots: true,
         duration: 300,
         overScan: 0,
@@ -18,7 +18,7 @@ const HobbiesCarousel = (props) => {
     };
     const imagesAndDescription = [
         {
-            imageFileName: 'trips',
+            imageFileName: 'garden',
             description: ' After a long day at the office, I enjoy working in the garden and building furniture. I also really like Extreme Sports. Mainly snowboarding, surfing and riding BMX.',
         },
         {
@@ -59,17 +59,18 @@ const HobbiesCarousel = (props) => {
     };
 
     const startAnimation = () => {
-        if (autoplay) {
+        if (!autoplay) {
             setAutoplay(true);
         }
     };
+
     const toggleAnimation = ()=>{
         setOpen(!open);
     };
 
     return (
         <div onTouchEnd={()=>toggleAnimation()} className={'hobbies-carousel'}>
-            <Slider {...settings}>
+            <Slider {...settings} autoplay={autoplay}>
                 {imagesAndDescription.map((imageAndDescription, index) => {
                     let className = index % 2 === 0 ? 'right' : 'left';
                     return (

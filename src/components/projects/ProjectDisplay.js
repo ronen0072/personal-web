@@ -6,8 +6,8 @@ import publicURL from '../../publicURL'
 
 function ProjectDisplay(project) {
     const [isHover, setIsHover] = useState(false);
-    const [infoClassName, setInfoClassName] = useState('favorite-Project-info-initiali');
-    const [imgClassName, setImgClassName] = useState('favoriteProject-img-initiali');
+    const [infoClassName, setInfoClassName] = useState('project-display-info-initiali');
+    const [imgClassName, setImgClassName] = useState('project-display-img-initiali');
 
     useEffect(() => {
         if (!project.displayContent) {
@@ -37,7 +37,7 @@ function ProjectDisplay(project) {
     };
     const displayTitle = () => {
         return (
-            <div className={'favorite-title content-padding white'}>
+            <div className={'project-display-title content-padding white'}>
                 <h2 className='project-title display-inline'>{project && project.title}</h2>
                 <br/>
                 <h4 className='project-sub-title grey-text display-inline'>{project && project.sub_title}</h4>
@@ -49,10 +49,10 @@ function ProjectDisplay(project) {
             <Fragment>
                 <div style={{
                     backgroundImage: "url(" + publicURL() + (project && project.imgFileName) + ".jpg )",
-                }} className={"favoriteProject-img " + imgClassName}>
+                }} className={"project-display-img " + imgClassName}>
                     {(project.editable && project.displayContent) && <EditProject project={project}/>}
                 </div>
-                <div className={'favoriteProject-img-effect'}>
+                <div className={'project-display-img-effect'}>
                 </div>
             </Fragment>
         )
@@ -106,7 +106,7 @@ function ProjectDisplay(project) {
     };
     const displayNavBtn = () => {
         return (
-            <div className="favorites-project-NavBtn center row">
+            <div className="project-display-NavBtn center row">
                 {displayMoreInfo()}
                 {displayGithubURL()}
                 {displayWebURL()}
@@ -116,17 +116,17 @@ function ProjectDisplay(project) {
 
     const displayContent = () => {
         return (
-            <div className="favorite-Project-info-wrapper content-padding white">
+            <div className="project-display-info-wrapper content-padding white">
                 <p id={"info-" + project.id}
-                   className={'favorite-Project-info ' + infoClassName}>{project && project.content}</p>
+                   className={'project-display-info ' + infoClassName}>{project && project.content}</p>
             </div>
         )
     };
 
     const onHover = () => {
         if (project.displayContent) {
-            setInfoClassName('favorite-Project-info-in');
-            setImgClassName('favoriteProject-img-in');
+            setInfoClassName('project-display-info-in');
+            setImgClassName('project-display-img-in');
             setIsHover(true);
         }
 
@@ -134,23 +134,25 @@ function ProjectDisplay(project) {
 
     const onblur = () => {
         if (isHover) {
-            setInfoClassName('favorite-Project-info-out');
-            setImgClassName('favoriteProject-img-out');
+            setInfoClassName('project-display-info-out');
+            setImgClassName('project-display-img-out');
         }
         setIsHover(false);
     };
     if (project.id)
         return (
-            <div className={project.className + " void-padding favoriteProject "} onTouchStart={onHover}
-                 onMouseOver={onHover} onMouseLeave={onblur}>
-                {displayImg()}
-                <div className="tech-icon white">
-                    {displayListOfIcons(project.languages.concat(project.libraries), false)}
-                </div>
-                {displayTitle()}
-                {displayContent()}
-                {displayNavBtn()}
+            <div className={'project-display-background'}>
+                <div className={project.className + " void-padding project-display "} onTouchStart={onHover}
+                     onMouseOver={onHover} onMouseLeave={onblur}>
+                    {displayImg()}
+                    <div className="tech-icon white">
+                        {displayListOfIcons(project.languages.concat(project.libraries), false)}
+                    </div>
+                    {displayTitle()}
+                    {displayContent()}
+                    {displayNavBtn()}
 
+                </div>
             </div>
         );
     else return null

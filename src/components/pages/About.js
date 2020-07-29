@@ -27,8 +27,10 @@ const About = (props) => {
                                 Atom, Anaconda, Intellij, CLion.<br/>
                                 You can view works on my <button className='link'
                                                                  onClick={() => changeSelection(1)}>projects</button> or
-                                my <a className='link' href='https://github.com/ronen0072'>github <i
+                                my <a target="_blank" rel="noopener noreferrer" className='link' href='https://github.com/ronen0072'>github <i
                                 className='fab fa-github link'/></a>.
+                                <br/>
+                                <a target="_blank" rel="noopener noreferrer" className="gold-btn" href='/Ronen Finish CV.pdf' >Download CV</a>
                             </p>
                         </div>
                         <div className='col s12 m12 l6 xl5'>
