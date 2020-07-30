@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import Section from '../layout/Section';
-import HobbiesCarousel from '../layout/HobbiesCarousel';
+import HobbiesSwiper from '../layout/HobbiesSwiper';
 import {Icons} from '../utils/Icons';
 import LazyLoad from "react-lazy-load";
 
@@ -95,7 +95,7 @@ const About = (props) => {
             <div className={'hobbies-title'}>
                 <h2 className='title'>More About Me</h2>
             </div>
-            <HobbiesCarousel/>
+            <HobbiesSwiper/>
         </Fragment>
     )
 };

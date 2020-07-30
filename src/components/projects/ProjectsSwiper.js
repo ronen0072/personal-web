@@ -93,6 +93,7 @@ const ProjectsSwiper = (props) => {
                                 <div
                                     key={project.id}>
                                     <ProjectDisplay
+                                        className={'projects-swiper-xs-item'}
                                         index={index}
                                         displayContent={index === slideIndex}
                                         editable={true}

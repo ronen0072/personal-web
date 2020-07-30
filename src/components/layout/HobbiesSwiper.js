@@ -3,7 +3,7 @@ import Section from "./Section";
 import publicURL from '../../publicURL';
 import Swiper from "react-id-swiper";
 
-const HobbiesCarousel = (props) => {
+const HobbiesSwiper = (props) => {
     const [autoplay, setAutoplay] = useState(false);
     const [open, setOpen] = useState(false);
     const [carouselItemIndex, setCarouselItemIndex] = useState(null);
@@ -114,6 +114,6 @@ const HobbiesCarousel = (props) => {
     );
 };
 
-export default HobbiesCarousel;
+export default HobbiesSwiper;
 
 
