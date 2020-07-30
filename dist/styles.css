@@ -7,7 +7,7 @@
 
 :root {
     --font-size: 13pt;
-    --logo-font-size: calc(20px + 3.4vw);
+    --logo-font-size: calc(10px + 1em);
     /*--nav-height: max(var(--logo-font-size), 10vh);*/
     --fontColorVal: 0, 0, 0;
     --fontColor: rgb(var(--fontColorVal));
@@ -349,10 +349,16 @@ input {
 }
 
 nav {
-    height: 13vh;
+    height: 4.5rem;
     background: var(--transparent);
     -webkit-box-shadow: 0 0 0 var(--transparent) !important;
     box-shadow: 0 0 0 var(--transparent) !important;
+    overflow: hidden;
+}
+@media only screen and (max-width: 600px)  {
+    nav {
+        height: 7rem;
+    }
 }
 
 .section {
@@ -467,17 +473,17 @@ nav {
 }
 
 .nav-link {
-    padding: calc(20px + 1.7vw) 15px 0 15px;
-    font-size: 1.5vw;
-    height: 100%;
+    padding: calc(15px + 1vw) 15px 10px 15px;
+    font-size: 1.5em;
+    line-height: 1.5em !important;
+    height: auto !important;
     cursor: pointer;
 }
 
 .mobile-menu .nav-link {
     cursor: pointer;
-    font-size: 13pt;
-    padding-left: 1em;
-    padding-top: 0;
+    font-size: 1em;
+    padding-left: 0.5em;
 }
 
 .mobile-menu .nav-link:hover {
@@ -485,11 +491,17 @@ nav {
 }
 
 .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.07);
+    transform: scale(1.08);
+    transition-duration: 0.3s;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link:active {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .sidenav {
-    font-size: 14px;
+    font-size: 1em;
     color: rgba(251, 236, 255, 0.87);
     width: initial;
     background-color: #282c34;
@@ -501,6 +513,7 @@ nav {
 
 .sidenav li > a > i, .sidenav li > a > [class^="mdi-"], .sidenav li > a li > a > [class*="mdi-"], .sidenav li > a > i.material-icons, li > a > i.project-skills-icon {
     color: var(--bright-gold);
+    float: none;
 }
 
 .nav-wrapper {
@@ -517,12 +530,16 @@ nav {
     padding: 0;
     /*overflow: hidden;*/
 }
+@media only screen and (max-width: 600px)  {
+    .modal {
+        width: 95%;
+    }
+}
 
 .header {
     display: -ms-flexbox;
     -ms-flex-pack: center;
     -ms-flex-align: center;
-    -moz-align-items: center;
     -webkit-align-items: center;
     -ms-align-items: center;
     align-items: center;
@@ -553,10 +570,10 @@ nav {
 
 .projects {
     position: relative;
-    top: -29vh;
+    top: calc(  calc(calc(var(--section-padding) * 2) + 2em) - 32vh);
     background: rgb(255, 255, 255);
     background: linear-gradient(0deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.2) 40%, rgba(0, 0, 0, 0.05) 80%, rgba(0, 0, 0, 0.3) 95%, rgba(0, 0, 0, 0.0) 100%);
-    margin-bottom: -29vh;
+    margin-bottom: -22vh;
     min-height: var(--project-display-Size);
 }
 
@@ -582,13 +599,15 @@ nav {
     transform: scale(1.2);
 }
 
+
+
 .gold-btn {
     display: inline-block;
-    height: var(--project-nav-link-height);
+    line-height: var(--project-nav-link-height);
     background-color: var(--bright-gold);
     color: rgb(238, 238, 238);
     border-radius: 3px;
-    padding: 0 0.5em;
+    padding: 0 0.5em !important;
     font-weight: bold;
     font-family: inherit;
     border-width: 0;
@@ -596,6 +615,8 @@ nav {
     box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
     font-size: 1em;
     transition: 0.3s;
+    text-align: center;
+    text-decoration: none;
 }
 
 .gold-btn:hover {
@@ -604,6 +625,9 @@ nav {
     box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.6);
 }
 
+a.gold-btn{
+    padding-top: 0.5em;
+}
 .about {
     background: linear-gradient(to right, #dee3e9, #e7eaef, #e1e6ec, #b2bdcd);
     background-image: url('./jesus-kiteque-wn-KYaHwcis-unsplash2000.jpg');
@@ -729,7 +753,7 @@ nav {
     color: rgba(255, 255, 255, 0.95);
 }
 
-.trips {
+.garden {
     background-image: linear-gradient(-30deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.08) 30%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.08) 70%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.08) 100%);
     background-color: #e08727;
     color: rgba(255, 255, 255, 0.95);
@@ -831,8 +855,10 @@ nav {
 }
 
 .brand-logo {
-    top: 1rem;
-    color: var(--logo);
+    padding:1rem 1rem 0.1rem 1rem !important;
+    /*background-color: rgba(255, 255, 255, 0.98);*/
+    background-color: rgba(255, 255, 255, 0.99);
+    color: #000000 !important;
     line-height: var(--logo-font-size);
     font-size: var(--logo-font-size) !important;
     font-family: LemonMilkLight-owxMq;
@@ -845,7 +871,7 @@ nav {
 
 .logo-continue {
     position: relative;
-    left: 0.5em;
+    padding-left: 0.5em;
     line-height: 0;
 }
 
@@ -962,7 +988,7 @@ nav {
     height: 100%;
     width: 100%;
     background-size: cover;
-    border-radius: 15px;
+    border-radius: 0.5em;
     border-width: 5px ;
     border-style: solid;
     border-color: rgba(183, 183, 183, 0.35);
@@ -1143,11 +1169,13 @@ nav {
 }
 
 .carousel-next:before {
-    background-image: url(/next.svg) !important;
+    background-image: url(./next.svg) !important;
+    color: rgba(255, 255, 255, 0.36);
+    fill: currentColor;
 }
 
 .carousel-prev:before {
-    background-image: url(/prev.svg) !important;
+    background-image: url(./prev.svg) !important;
     background-size: 125px 175px;
 }
 

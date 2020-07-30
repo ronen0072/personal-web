@@ -23,7 +23,7 @@ const About = (props) => {
                                 Experience working with Linux systems <i className='fab fa-linux skils-icon'/> and
                                 git <i className='fab fa-github skils-icon'/>.
                                 <br/>
-                                <h6 className='home-color sub-title display-inline'>IDE:</h6>Visual Studio, Eclipse,
+                                <b className='home-color sub-title display-inline'>IDE:</b>Visual Studio, Eclipse,
                                 Atom, Anaconda, Intellij, CLion.<br/>
                                 You can view works on my <button className='link'
                                                                  onClick={() => changeSelection(1)}>projects</button> or
@@ -36,8 +36,7 @@ const About = (props) => {
                         <div className='col s12 m12 l6 xl5'>
                             <div className='row no-margin about-skills' data-aos="fade-up"
                                  data-aos-anchor-placement="center-bottom" data-aos-duration="800">
-                                <p>
-                                    <h3 className='no-margin-top-bottom home-color sub-title skills-title'>skills:</h3>
+                                <h3 className='no-margin-top-bottom home-color sub-title skills-title'>skills:</h3>
                                     <div className='col s12 m6'>
                                         <h5 className='home-color sub-title '>Languages: </h5>
                                         <ul>
@@ -83,12 +82,9 @@ const About = (props) => {
                                                        iconClassNaneTitle='skill-title'/></li>
                                             <li><Icons name="openGL" iconClassName='skills-icon'
                                                        iconClassNaneTitle='skill-title'/></li>
-
-
                                         </ul>
                                     </div>
                                     </div>
-                                </p>
                             </div>
                         </div>
                         <br/>

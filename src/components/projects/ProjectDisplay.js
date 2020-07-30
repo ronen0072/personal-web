@@ -142,7 +142,7 @@ function ProjectDisplay(project) {
     if (project.id)
         return (
             <div className={'project-display-background'}>
-                <div className={project.className + " void-padding project-display "} onTouchStart={onHover}
+                <div className={project.className + " void-padding project-display "} onClick={onHover}
                      onMouseOver={onHover} onMouseLeave={onblur}>
                     {displayImg()}
                     <div className="tech-icon white">
