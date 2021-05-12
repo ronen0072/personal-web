@@ -21,7 +21,7 @@
     "redux-firestore": "^0.5.7",
     "redux-thunk": "^2.3.0",
     "save": "^2.4.0",
-    "swiper": "^5.3.8"
+    "swiper": "^6.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
